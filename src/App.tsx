@@ -12,7 +12,6 @@ function App() {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Update page title based on current step
     const titles = {
       landing: 'SkinSync - Personalized Makeup Recommendations',
       camera: 'SkinSync - Capture Your Face',
@@ -24,10 +23,10 @@ function App() {
   }, [currentStep]);
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${
+    <div className={`min-h-screen ${
       theme === 'dark' 
-        ? 'from-gray-900 to-gray-800 text-white' 
-        : 'from-gray-50 to-gray-100 text-gray-900'
+        ? 'bg-gray-900 text-white' 
+        : 'bg-gray-50 text-gray-900'
     } transition-colors duration-300`}>
       <AnimatePresence mode="wait">
         {currentStep === 'landing' && <LandingScreen key="landing" />}

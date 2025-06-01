@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Heart } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Button } from './UI/Button';
 import { Product } from '../lib/supabase';
 
@@ -12,7 +12,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   return (
     <motion.div
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg h-full flex flex-col"
+      className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden h-full flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       animate={{ 
         opacity: 1, 
@@ -28,52 +28,49 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
           alt={`${product.brand} ${product.name} - ${product.color_name}`}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-2 right-2">
-          <Button variant="ghost" size="icon" className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/40">
-            <Heart size={18} />
-          </Button>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-          <span className="inline-block px-3 py-1 bg-primary/90 text-white text-xs rounded-full mb-2">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+          <span className="inline-block px-2 py-1 bg-primary/90 text-white text-xs rounded-md">
             {product.category}
           </span>
         </div>
       </div>
       
       <div className="p-4 flex-grow">
-        <div className="font-bold text-gray-800 dark:text-white mb-1">{product.brand}</div>
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{product.name}</h3>
+        <div className="text-sm text-gray-600 mb-1">{product.brand}</div>
+        <h3 className="text-base font-medium text-gray-900 mb-3">{product.name}</h3>
         
-        <div className="mt-2 flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-3">
           <div 
-            className="w-6 h-6 rounded-full border border-gray-200" 
+            className="w-5 h-5 rounded-full border border-gray-200" 
             style={{ backgroundColor: product.color_code }}
             title={product.color_name}
           />
-          <span className="text-sm text-gray-600 dark:text-gray-300">
+          <span className="text-sm text-gray-600">
             {product.color_name}
           </span>
         </div>
         
-        <div className="mt-2 flex flex-wrap gap-2">
-          <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+        <div className="flex flex-wrap gap-2 mb-3">
+          <span className="text-xs px-2 py-1 bg-gray-50 text-gray-600 rounded-md">
             {product.undertone} undertone
           </span>
-          <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">
+          <span className="text-xs px-2 py-1 bg-gray-50 text-gray-600 rounded-md">
             {product.complexion} complexion
           </span>
         </div>
         
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          {product.description}
-        </p>
+        {product.description && (
+          <p className="text-sm text-gray-600">
+            {product.description}
+          </p>
+        )}
       </div>
       
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end">
+      <div className="p-4 border-t border-gray-100">
         <Button 
-          variant="secondary" 
+          variant="primary" 
           size="sm" 
-          className="flex items-center gap-1"
+          className="w-full flex items-center justify-center gap-2"
           onClick={() => window.open(product.purchase_url, '_blank')}
         >
           Purchase <ExternalLink size={14} />
