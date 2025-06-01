@@ -57,9 +57,6 @@ export const useCamera = () => {
           console.log('Stopping track:', track.kind);
           track.stop();
         });
-      }
-      
-      if (webcamRef.current?.video) {
         webcamRef.current.video.srcObject = null;
       }
       

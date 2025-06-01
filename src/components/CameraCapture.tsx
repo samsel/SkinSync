@@ -43,7 +43,6 @@ const CameraCapture: React.FC = () => {
   };
 
   const handleCancel = () => {
-    console.log('Cancel button clicked, cleaning up...');
     cleanup(); // Stop the camera before navigating away
     setCurrentStep('landing');
   };
