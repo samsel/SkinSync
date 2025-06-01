@@ -106,13 +106,13 @@ const LandingScreen: React.FC = () => {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent z-10" />
             <img 
-              src="https://images.pexels.com/photos/3373716/pexels-photo-3373716.jpeg" 
-              alt="Beauty products arrangement" 
-              className="w-full h-64 object-cover rounded-lg opacity-60"
+              src="/ChatGPT Image Jun 1, 2025, 02_16_03 PM.png" 
+              alt="Foundation swatches on different skin tones" 
+              className="w-full h-64 object-cover rounded-lg opacity-90"
             />
             <div className="absolute inset-x-0 bottom-0 p-6 z-20">
               <p className="text-lg sm:text-xl text-white/90 font-light">
-                Personalized beauty recommendations that celebrate your unique features
+                Find your perfect match across all skin tones
               </p>
             </div>
           </div>
