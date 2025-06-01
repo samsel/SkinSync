@@ -55,13 +55,12 @@ const LandingScreen: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="w-full max-w-md"
         >
           <Button 
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="w-full h-16 rounded-full text-2xl font-medium"
+            className="h-16 rounded-full text-2xl font-medium px-12"
           >
             <span className="flex items-center justify-center gap-3">
               <Camera className="w-7 h-7" />
