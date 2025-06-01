@@ -4,6 +4,7 @@ import { Camera, ShieldCheck } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
+import SkinToneStrip from './UI/SkinToneStrip';
 
 const LandingScreen: React.FC = () => {
   const { setCurrentStep } = useAppStore();
@@ -37,6 +38,7 @@ const LandingScreen: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <SkinToneStrip />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-4 safe-top safe-bottom">
         <motion.div 
           className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 sm:mb-8 px-4"
