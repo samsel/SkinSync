@@ -13,23 +13,6 @@ const LandingScreen: React.FC = () => {
     setCurrentStep('camera');
   };
 
-  const valueProps = [
-    {
-      title: "Take a Selfie in natural light",
-      description: "",
-      delay: 0.2
-    },
-    {
-      title: "Our AI Analyzes your Selfie",
-      description: "",
-      delay: 0.3
-    },
-    {
-      title: "Discover makeup that works for you",
-      description: "",
-      delay: 0.4
-    }
-  ];
 
   return (
     <motion.div 
@@ -46,7 +29,7 @@ const LandingScreen: React.FC = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Logo className="w-16 h-16 sm:w-20 sm:h-20 text-primary-400" />
+  
           <motion.h1 
             className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
             initial={{ y: -20, opacity: 0 }}
