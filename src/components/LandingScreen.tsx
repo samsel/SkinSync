@@ -104,12 +104,7 @@ const LandingScreen: React.FC = () => {
         >
           <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {valueProps.map((prop, index) => (
-              <motion.div
-                key={prop.title}
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: prop.delay }}
+   
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 blur-xl transform group-hover:scale-105 transition-transform duration-300" />
                 <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 p-3 sm:p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
@@ -118,7 +113,7 @@ const LandingScreen: React.FC = () => {
                     <p className="text-xs sm:text-sm text-gray-300 line-clamp-2 sm:line-clamp-none">{prop.description}</p>
                   </div>
                 </div>
-              </motion.div>
+         
             ))}
           </div>
         </motion.div>
