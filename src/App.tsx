@@ -5,11 +5,9 @@ import CameraCapture from './components/CameraCapture';
 import AnalyzingScreen from './components/AnalyzingScreen';
 import ProductRecommendations from './components/ProductRecommendations';
 import { useAppStore } from './store';
-import { useTheme } from './hooks/useTheme';
 
 function App() {
   const { currentStep } = useAppStore();
-  const { theme } = useTheme();
 
   useEffect(() => {
     const titles = {
@@ -23,11 +21,7 @@ function App() {
   }, [currentStep]);
 
   return (
-    <div className={`min-h-screen ${
-      theme === 'dark' 
-        ? 'bg-gray-900 text-white' 
-        : 'bg-primary-50 text-gray-900'
-    } transition-colors duration-300`}>
+    <div className="min-h-screen bg-gray-900 text-white">
       <AnimatePresence mode="wait">
         {currentStep === 'landing' && <LandingScreen key="landing" />}
         {currentStep === 'camera' && <CameraCapture key="camera" />}

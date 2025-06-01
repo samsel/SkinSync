@@ -27,7 +27,7 @@ const ProductRecommendations: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-800">
         <Button 
           variant="ghost" 
           size="sm" 
@@ -49,7 +49,7 @@ const ProductRecommendations: React.FC = () => {
       </div>
 
       {skinAnalysis && (
-        <div className="bg-primary-50 px-4 py-8 md:py-12 mb-6">
+        <div className="bg-gray-800/50 px-4 py-8 md:py-12 mb-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <motion.div
@@ -60,7 +60,7 @@ const ProductRecommendations: React.FC = () => {
                 <Logo className="w-10 h-10" />
               </motion.div>
               <motion.h2 
-                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-900 bg-clip-text text-transparent"
+                className="text-2xl md:text-3xl font-bold text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -70,7 +70,7 @@ const ProductRecommendations: React.FC = () => {
             </div>
 
             <motion.p 
-              className="text-lg text-gray-600 mb-8 font-medium"
+              className="text-lg text-gray-300 mb-8 font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -85,32 +85,32 @@ const ProductRecommendations: React.FC = () => {
               transition={{ delay: 0.4 }}
             >
               <motion.div 
-                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-sm text-primary-600 font-medium mb-1">Your undertone</div>
-                <div className="text-2xl font-semibold text-gray-900 capitalize">
+                <div className="text-sm text-primary font-medium mb-1">Your undertone</div>
+                <div className="text-2xl font-semibold text-white capitalize">
                   {skinAnalysis.undertone}
                 </div>
               </motion.div>
               <motion.div 
-                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-sm text-primary-600 font-medium mb-1">Your complexion</div>
-                <div className="text-2xl font-semibold text-gray-900 capitalize">
+                <div className="text-sm text-primary font-medium mb-1">Your complexion</div>
+                <div className="text-2xl font-semibold text-white capitalize">
                   {skinAnalysis.complexion}
                 </div>
               </motion.div>
               <motion.div 
-                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="text-sm text-primary-600 font-medium mb-1">Your skin type</div>
-                <div className="text-2xl font-semibold text-gray-900 capitalize">
+                <div className="text-sm text-primary font-medium mb-1">Your skin type</div>
+                <div className="text-2xl font-semibold text-white capitalize">
                   {skinAnalysis.skinType}
                 </div>
               </motion.div>
@@ -128,7 +128,7 @@ const ProductRecommendations: React.FC = () => {
         
         {allProducts.length === 0 && (
           <div className="flex items-center justify-center h-full">
-            <p className="text-gray-500">
+            <p className="text-gray-400">
               No recommendations available
             </p>
           </div>

@@ -1,14 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Moon, Sun } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
-import { useTheme } from '../hooks/useTheme';
 import { Logo } from './Logo';
 
 const LandingScreen: React.FC = () => {
   const { setCurrentStep } = useAppStore();
-  const { theme, toggleTheme } = useTheme();
 
   const handleStartCapture = () => {
     setCurrentStep('camera');
@@ -21,17 +19,6 @@ const LandingScreen: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="absolute top-4 right-4">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          onClick={toggleTheme}
-          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-        </Button>
-      </div>
-      
       <motion.div 
         className="mb-8"
         initial={{ scale: 0.9, opacity: 0 }}
@@ -51,7 +38,7 @@ const LandingScreen: React.FC = () => {
       </motion.h1>
       
       <motion.p 
-        className="text-xl mb-12 max-w-md mx-auto text-gray-600 dark:text-gray-300"
+        className="text-xl mb-12 max-w-md mx-auto text-gray-300"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -95,9 +82,9 @@ const LandingScreen: React.FC = () => {
             description: "Purchase recommended products from your favorite brands"
           }
         ].map((feature, index) => (
-          <div key={index} className="p-6 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+          <div key={index} className="p-6 rounded-lg bg-gray-800 border border-gray-700">
             <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">{feature.description}</p>
+            <p className="text-sm text-gray-400">{feature.description}</p>
           </div>
         ))}
       </motion.div>
