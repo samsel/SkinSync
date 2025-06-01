@@ -16,19 +16,19 @@ const LandingScreen: React.FC = () => {
     {
       icon: Zap,
       title: "Instant Analysis",
-      description: "Advanced AI technology analyzes your unique features in milliseconds with professional-grade accuracy",
+      description: "Just take a picture and our Advanced AI technology analyzes your unique features in milliseconds",
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
       icon: Sparkles,
       title: "Perfect Match",
-      description: "Get personalized product recommendations that complement your exact skin tone and undertone",
+      description: "Find your ideal makeup shades instantly based on your skin tone",
       gradient: "from-fuchsia-500 to-rose-500"
     },
     {
       icon: ShoppingBag,
       title: "Smart Shopping",
-      description: "Browse curated selections from top brands and purchase your perfect matches instantly",
+      description: "Shop your perfect matches directly from top beauty brands",
       gradient: "from-rose-500 to-violet-500"
     }
   ];
