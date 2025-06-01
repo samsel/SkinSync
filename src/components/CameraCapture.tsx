@@ -19,14 +19,19 @@ const CameraCapture: React.FC = () => {
   const { setCurrentStep, setCapturedImage } = useAppStore();
 
   useEffect(() => {
+    let mounted = true;
+
     // Request camera permission immediately
     navigator.mediaDevices.getUserMedia({ video: true })
       .catch(err => {
-        console.error('Camera permission error:', err);
+        if (mounted) {
+          console.error('Camera permission error:', err);
+        }
       });
       
     // Cleanup when component unmounts
     return () => {
+      mounted = false;
       cleanup();
     };
   }, [cleanup]);
@@ -35,14 +40,14 @@ const CameraCapture: React.FC = () => {
     if (!isCameraReady) return;
     const imageSrc = captureImage();
     if (imageSrc) {
-      cleanup(); // Stop the camera before navigating away
+      cleanup();
       setCapturedImage(imageSrc);
       setCurrentStep('analyzing');
     }
   };
 
   const handleCancel = () => {
-    cleanup(); // Stop the camera before navigating away
+    cleanup();
     setCurrentStep('landing');
   };
 
@@ -82,7 +87,7 @@ const CameraCapture: React.FC = () => {
         <X className="w-6 h-6" />
       </motion.button>
 
-      {/* Guidance text - Now at the top */}
+      {/* Guidance text */}
       <motion.div 
         className="absolute inset-x-0 top-12 z-10 text-center"
         initial={{ opacity: 0, y: -20 }}
