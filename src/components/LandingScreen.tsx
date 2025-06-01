@@ -14,21 +14,21 @@ const LandingScreen: React.FC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col min-h-[100dvh] text-center bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50"
+      className="flex flex-col min-h-[100dvh] text-center bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50 safe-top safe-bottom"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 safe-top safe-bottom">
         <motion.div 
-          className="flex items-center gap-6 mb-12 px-4"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-8 sm:mb-12 px-4"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Logo className="w-20 h-20 text-primary-400" />
+          <Logo className="w-16 h-16 sm:w-20 sm:h-20 text-primary-400" />
           <motion.h1 
-            className="text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
+            className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -38,19 +38,19 @@ const LandingScreen: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="mb-16 max-w-2xl mx-auto px-8"
+          className="mb-12 sm:mb-16 w-full max-w-2xl mx-auto px-4 sm:px-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="relative p-8 rounded-2xl overflow-hidden backdrop-blur-sm border border-primary-500/20">
+          <div className="relative p-6 sm:p-8 rounded-2xl overflow-hidden backdrop-blur-sm border border-primary-500/20">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10"></div>
             <div className="absolute inset-0 bg-primary-950/30"></div>
             <div className="relative">
-              <h2 className="text-3xl font-light mb-1 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
-                 your natural beauty + makeup = sync
+              <h2 className="text-2xl sm:text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
+                your natural beauty + makeup = sync
               </h2>
-              <p className="text-sm font-light text-gray-300">
+              <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
                 Selfie. Scan. Slay. Get beauty recs powered by AI that actually get you.
               </p>
             </div>
@@ -61,17 +61,17 @@ const LandingScreen: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="relative"
+          className="relative px-4"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <Button 
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20"
+            className="relative h-14 sm:h-16 rounded-full text-xl sm:text-2xl font-medium px-8 sm:px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20 w-full sm:w-auto"
           >
             <span className="flex items-center justify-center gap-3">
-              <Camera className="w-7 h-7" />
+              <Camera className="w-6 h-6 sm:w-7 sm:h-7" />
               Take a snap
             </span>
           </Button>
@@ -79,7 +79,7 @@ const LandingScreen: React.FC = () => {
       </main>
 
       <motion.footer 
-        className="w-full py-2 px-4 border-t border-gray-800/30 mt-auto bg-gray-900/60 backdrop-blur-sm"
+        className="w-full py-2 px-4 border-t border-gray-800/30 mt-auto bg-gray-900/60 backdrop-blur-sm safe-bottom"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
