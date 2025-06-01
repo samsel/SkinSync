@@ -50,7 +50,7 @@ const LandingScreen: React.FC = () => {
               <h2 className="text-3xl font-light mb-4 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
                 Discover your perfect makeup match
               </h2>
-              <p className="text-lg font-light text-gray-300">
+              <p className="text-lg font-extralight text-gray-300">
                 Our AI analyzes your unique features to curate products that enhance your natural beauty
               </p>
             </div>
