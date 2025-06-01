@@ -28,16 +28,8 @@ export const useCamera = () => {
         webcamRef.current.video.srcObject = null;
       }
 
-      // Release user media
-      navigator.mediaDevices?.getUserMedia({ video: false })
-        .then(stream => {
-          stream.getTracks().forEach(track => track.stop());
-        })
-        .catch(() => {});
-
       if (mountedRef.current) {
         setIsCameraReady(false);
-        setError(null);
       }
     } catch (error) {
       console.error('Error during cleanup:', error);
@@ -61,6 +53,16 @@ export const useCamera = () => {
       setError('Failed to initialize camera');
     }
   }, [cleanup]);
+
+  // Handle camera errors
+  const handleCameraError = useCallback((error: string | DOMException) => {
+    const errorMessage = error instanceof DOMException 
+      ? 'Camera access denied. Please grant permission to use your camera.'
+      : 'Failed to access camera. Please try again.';
+    
+    setError(errorMessage);
+    setIsCameraReady(false);
+  }, []);
 
   // Capture a frame from the webcam
   const captureImage = useCallback(() => {
@@ -90,7 +92,6 @@ export const useCamera = () => {
   // Cleanup on mount and unmount
   useEffect(() => {
     mountedRef.current = true;
-    cleanup(); // Initial cleanup
 
     return () => {
       mountedRef.current = false;
@@ -104,6 +105,7 @@ export const useCamera = () => {
     error,
     captureImage,
     handleCameraReady,
+    handleCameraError,
     cleanup
   };
 };

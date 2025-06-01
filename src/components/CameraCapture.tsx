@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Webcam from 'react-webcam';
 import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -12,36 +12,12 @@ const CameraCapture: React.FC = () => {
     isCameraReady,
     captureImage, 
     handleCameraReady,
+    handleCameraError,
     cleanup,
     error
   } = useCamera();
 
   const { setCurrentStep, setCapturedImage } = useAppStore();
-
-  useEffect(() => {
-    let mounted = true;
-    
-    // Initial cleanup
-    cleanup();
-
-    // Request camera permission
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        if (!mounted) {
-          stream.getTracks().forEach(track => track.stop());
-        }
-      })
-      .catch(err => {
-        if (mounted) {
-          console.error('Camera permission error:', err);
-        }
-      });
-
-    return () => {
-      mounted = false;
-      cleanup();
-    };
-  }, [cleanup]);
 
   const handleCapture = () => {
     if (!isCameraReady) return;
@@ -111,6 +87,7 @@ const CameraCapture: React.FC = () => {
           screenshotFormat="image/jpeg"
           videoConstraints={videoConstraints}
           onUserMedia={handleCameraReady}
+          onUserMediaError={handleCameraError}
           className="h-full w-full object-cover"
           mirrored
         />
