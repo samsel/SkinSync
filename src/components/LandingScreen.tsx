@@ -21,12 +21,12 @@ const LandingScreen: React.FC = () => {
     >
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         <motion.div 
-          className="flex flex-col items-center gap-4 mb-12"
+          className="flex items-center gap-4 mb-12"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Logo className="w-24 h-24 text-primary-400" />
+          <Logo className="w-16 h-16 text-primary-400" />
           <motion.h1 
             className="text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
             initial={{ y: -20, opacity: 0 }}
