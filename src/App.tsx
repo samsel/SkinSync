@@ -21,7 +21,7 @@ function App() {
   }, [currentStep]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50 text-white">
       <AnimatePresence mode="wait">
         {currentStep === 'landing' && <LandingScreen key="landing" />}
         {currentStep === 'camera' && <CameraCapture key="camera" />}
