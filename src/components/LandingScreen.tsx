@@ -16,7 +16,7 @@ const LandingScreen: React.FC = () => {
     {
       icon: Zap,
       title: "Instant Analysis",
-      description: "Just take a picture and our Advanced AI technology analyzes your unique features in milliseconds",
+      description: "Just take a picture and our AI analyzes your features in seconds",
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
@@ -63,7 +63,7 @@ const LandingScreen: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-        Take a selfie to discover your perfect makeup matches! Our AI beauty advisor analyzes your unique skin tone, undertones, and facial features to recommend personalized makeup products that will enhance your natural beauty.
+        Take a selfie to discover your perfect makeup matches! Our AI analyzes your unique features to find products that complement your natural beauty.
       </motion.p>
       
       <motion.div
