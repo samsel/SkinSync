@@ -33,12 +33,11 @@ const LandingScreen: React.FC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col min-h-[100dvh] text-center bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50 safe-top safe-bottom"
+      className="flex flex-col min-h-[100dvh] text-center bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50 safe-top safe-bottom relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <SkinToneStrip />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-4 safe-top safe-bottom">
         <motion.div 
           className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 sm:mb-8 px-4"
@@ -120,11 +119,12 @@ const LandingScreen: React.FC = () => {
       </main>
 
       <motion.footer
-        className="w-full py-3 px-4 border-t border-gray-800/50 bg-gray-900/80 backdrop-blur-sm"
+        className="w-full py-3 px-4 border-t border-gray-800/50 bg-gray-900/80 backdrop-blur-sm relative"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
+        <SkinToneStrip />
         <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-sm font-light text-gray-400">
           <ShieldCheck size={18} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters. Photos are analyzed instantly and never stored.</span>
