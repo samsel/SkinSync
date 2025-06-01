@@ -43,17 +43,7 @@ const LandingScreen: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Take a selfie to{' '}
-          <span className="relative inline-block pb-2">
-            discover your perfect makeup matches
-            <motion.span 
-              className="absolute left-0 right-0 -bottom-1 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full transform -skew-x-12"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            ></motion.span>
-          </span>
-          {' '}Our AI analyzes your unique features to find products that complement your natural beauty.
+          Take a selfie to discover your perfect makeup matches. Our AI analyzes your unique features to find products that complement your natural beauty.
         </motion.p>
         
         <motion.div
@@ -80,8 +70,8 @@ const LandingScreen: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 text-sm text-gray-400 text-center">
-          <ShieldCheck size={20} className="flex-shrink-0 text-primary-400" />
+        <div className="max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400 text-center">
+          <ShieldCheck size={16} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
         </div>
       </motion.footer>
