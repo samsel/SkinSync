@@ -75,8 +75,8 @@ const LandingScreen: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-xs font-extralight text-gray-400">
-          <ShieldCheck size={20} className="flex-shrink-0 text-primary-400" />
+        <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-[10px] font-extralight text-gray-400">
+          <ShieldCheck size={16} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! This app doesn't store any photos - they're analyzed instantly and deleted.</span>
         </div>
       </motion.footer>
