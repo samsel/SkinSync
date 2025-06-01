@@ -19,9 +19,9 @@ const LandingScreen: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8 safe-top safe-bottom">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-4 safe-top safe-bottom">
         <motion.div 
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-8 sm:mb-12 px-4"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 sm:mb-8 px-4"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -38,7 +38,7 @@ const LandingScreen: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="mb-12 sm:mb-16 w-full max-w-2xl mx-auto px-4 sm:px-8"
+          className="mb-10 sm:mb-12 w-full max-w-2xl mx-auto px-4 sm:px-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
