@@ -72,7 +72,7 @@ const LandingScreen: React.FC = () => {
           >
             <span className="flex items-center justify-center gap-3">
               <Camera className="w-7 h-7" />
-              Take a snap
+              Take a snap to see SkinSync recommendations
             </span>
           </Button>
         </motion.div>
