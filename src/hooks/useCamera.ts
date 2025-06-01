@@ -36,11 +36,14 @@ export const useCamera = () => {
 
   // Cleanup camera resources
   const cleanup = useCallback(() => {
-    if (webcamRef.current) {
-      const stream = webcamRef.current.video?.srcObject as MediaStream;
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-      }
+    console.log('Cleaning up camera resources');
+    if (webcamRef.current?.video?.srcObject) {
+      const stream = webcamRef.current.video.srcObject as MediaStream;
+      stream.getTracks().forEach(track => {
+        track.stop();
+        console.log('Stopped track:', track.kind);
+      });
+      webcamRef.current.video.srcObject = null;
     }
     setIsCameraReady(false);
     setError(null);

@@ -25,20 +25,25 @@ const CameraCapture: React.FC = () => {
         console.error('Camera permission error:', err);
       });
       
-    return () => cleanup();
+    // Cleanup when component unmounts
+    return () => {
+      console.log('CameraCapture unmounting, cleaning up...');
+      cleanup();
+    };
   }, [cleanup]);
 
   const handleCapture = () => {
     if (!isCameraReady) return;
     const imageSrc = captureImage();
     if (imageSrc) {
+      cleanup(); // Stop the camera before navigating away
       setCapturedImage(imageSrc);
       setCurrentStep('analyzing');
     }
   };
 
   const handleCancel = () => {
-    cleanup();
+    cleanup(); // Stop the camera before navigating away
     setCurrentStep('landing');
   };
 
