@@ -43,7 +43,12 @@ const LandingScreen: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Take a selfie to discover your perfect makeup matches! Our AI analyzes your unique features to find products that complement your natural beauty.
+          Take a selfie to{' '}
+          <span className="relative inline-block">
+            discover your perfect makeup matches
+            <span className="absolute left-0 right-0 bottom-1 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full blur-[1px] transform -skew-x-12"></span>
+          </span>
+          {' '}Our AI analyzes your unique features to find products that complement your natural beauty.
         </motion.p>
         
         <motion.div
