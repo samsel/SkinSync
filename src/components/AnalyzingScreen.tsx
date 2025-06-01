@@ -65,9 +65,11 @@ const AnalyzingScreen: React.FC = () => {
         exit={{ opacity: 0 }}
       >
         <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 max-w-md w-full text-center">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-200 mb-4">Unable to Analyze Photo</h3>
-          <p className="text-gray-300 mb-6">{error}</p>
+          <AlertCircle className="w-12 h-12 text-primary-400 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-200 mb-2">Improve Lighting</h3>
+          <p className="text-gray-300 mb-6">
+            We couldn't analyze your skin tone clearly. Please try again in a well-lit area, preferably with natural light facing your face.
+          </p>
           <Button onClick={handleRetry} variant="primary" size="lg">
             Take New Photo
           </Button>
