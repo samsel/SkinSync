@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { X } from 'lucide-react';
+import { X, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './UI/Button';
 import { useCamera } from '../hooks/useCamera';
@@ -65,7 +65,7 @@ const CameraCapture: React.FC = () => {
           variant="ghost" 
           size="icon" 
           onClick={handleCancel} 
-          className="text-white bg-black/20 backdrop-blur-sm"
+          className="text-white bg-black/20 backdrop-blur-sm hover:bg-white/10"
         >
           <X />
         </Button>
@@ -103,17 +103,22 @@ const CameraCapture: React.FC = () => {
         {/* Capture button */}
         <div className="absolute inset-x-0 bottom-0 pb-8 pt-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
           <div className="flex justify-center">
-            <motion.button
+            <Button
               onClick={handleCapture}
               disabled={!isCameraReady}
-              className="relative w-20 h-20 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
-              whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.05 }}
+              className="w-20 h-20 rounded-full p-0 relative overflow-hidden group disabled:opacity-50"
             >
-              <div className="absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm" />
-              <div className="absolute inset-2 rounded-full bg-white" />
-              <div className="absolute inset-3 rounded-full border-2 border-black/10" />
-            </motion.button>
+              <motion.div
+                className="absolute inset-0 bg-white"
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <div className="absolute inset-2 rounded-full border-4 border-gray-100 flex items-center justify-center">
+                  <Camera className="w-8 h-8 text-gray-600" />
+                </div>
+              </motion.div>
+            </Button>
           </div>
         </div>
       </div>
