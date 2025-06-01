@@ -76,7 +76,7 @@ const LandingScreen: React.FC = () => {
             </span>
           </Button>
         </motion.div>
-        <span>to see SkinSync recommendations</span>
+        <span className="">With just a photo you can see SkinSync recommendations instantly. Try now.</span>
       </main>
 
       <motion.footer 
