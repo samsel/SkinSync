@@ -38,16 +38,16 @@ const LandingScreen: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="mb-10 sm:mb-12 w-full max-w-2xl mx-auto px-4 sm:px-8"
+          className="mb-10 sm:mb-12 w-full max-w-2xl mx-auto"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="relative p-2 overflow-hidden backdrop-blur-sm border border-primary-500/20">
+          <div className="relative p-2 mx-2 overflow-hidden backdrop-blur-sm border border-primary-500/20">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10"></div>
             <div className="absolute inset-0 bg-primary-950/30"></div>
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text whitespace-nowrap">
+              <h2 className="text-xl sm:text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text whitespace-nowrap overflow-x-auto scrollbar-hide">
                 your natural beauty + makeup = sync
               </h2>
               <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
