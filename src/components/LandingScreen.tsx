@@ -95,10 +95,7 @@ const LandingScreen: React.FC = () => {
               Take a snap
             </span>
           </Button>
-        </motion.div>
-
-        {/* Value Proposition Cards */}
-     
+        </motion.div>     
          
      
       </main>
