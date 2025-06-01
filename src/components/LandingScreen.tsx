@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, ShieldCheck, Camera as CameraIcon, Sparkles, ShoppingBag } from 'lucide-react';
+import { Camera, ShieldCheck } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
@@ -14,21 +14,18 @@ const LandingScreen: React.FC = () => {
 
   const valueProps = [
     {
-      icon: CameraIcon,
-      title: "Quick Selfie",
-      description: "Take a simple selfie in natural light",
+      title: "Take a Selfie",
+      description: "Snap a quick photo in natural light",
       delay: 0.2
     },
     {
-      icon: Sparkles,
       title: "AI Analysis",
-      description: "Our AI analyzes your unique skin characteristics",
+      description: "Get instant analysis of your unique features",
       delay: 0.3
     },
     {
-      icon: ShoppingBag,
-      title: "Perfect Matches",
-      description: "Get instant makeup recommendations that work for you",
+      title: "Perfect Match",
+      description: "Discover makeup that works for you",
       delay: 0.4
     }
   ];
@@ -117,9 +114,6 @@ const LandingScreen: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 rounded-xl blur-xl transform group-hover:scale-105 transition-transform duration-300" />
                 <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-3 sm:p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
                   <div className="flex flex-col items-center text-center">
-                    <div className="p-2 sm:p-3 bg-primary-500/20 rounded-full mb-2 sm:mb-4">
-                      <prop.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary-400" />
-                    </div>
                     <h3 className="text-sm sm:text-lg font-medium text-white mb-1 sm:mb-2">{prop.title}</h3>
                     <p className="text-xs sm:text-sm text-gray-300 line-clamp-2 sm:line-clamp-none">{prop.description}</p>
                   </div>
