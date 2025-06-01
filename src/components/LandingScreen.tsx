@@ -61,10 +61,12 @@ const LandingScreen: React.FC = () => {
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="rounded-full px-8 py-6 text-lg flex items-center gap-3 w-full justify-center"
+            className="w-full h-16 rounded-full text-xl font-medium"
           >
-            <Camera className="w-6 h-6" />
-            Take a snap
+            <span className="flex items-center justify-center gap-3">
+              <Camera className="w-7 h-7" />
+              Take a snap
+            </span>
           </Button>
         </motion.div>
       </main>
