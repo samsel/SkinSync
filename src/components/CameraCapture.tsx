@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Webcam from 'react-webcam';
-import { Camera, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from './UI/Button';
 import { useCamera } from '../hooks/useCamera';
@@ -53,19 +53,19 @@ const CameraCapture: React.FC = () => {
 
   return (
     <motion.div 
-      className="relative h-full flex flex-col items-center justify-center"
+      className="relative h-full flex flex-col items-center justify-center bg-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <div className="absolute top-4 right-4 z-10">
-        <Button variant="ghost" size="icon" onClick={handleCancel}>
+        <Button variant="ghost" size="icon" onClick={handleCancel} className="text-white">
           <X />
         </Button>
       </div>
       
-      <div className="relative max-w-md w-full mx-auto">
-        <div className="aspect-[3/4] relative overflow-hidden rounded-2xl">
+      <div className="relative w-full max-w-md mx-auto">
+        <div className="aspect-[3/4] relative overflow-hidden">
           <Webcam
             audio={false}
             ref={webcamRef}
@@ -82,21 +82,21 @@ const CameraCapture: React.FC = () => {
           
           {/* Guidance text */}
           <div className="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 py-2 px-4 mx-4 rounded-lg">
-            Position your face within the circle and click capture
+            Position your face within the circle
           </div>
         </div>
         
-        <div className="mt-6 flex justify-center">
-          <Button 
-            variant="gradient" 
-            size="lg" 
+        {/* Circular capture button */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+          <motion.button
             onClick={handleCapture}
             disabled={!isCameraReady}
-            className="rounded-full px-8 py-4 text-lg flex items-center gap-2 disabled:opacity-50"
+            className="relative w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-4 border-white disabled:opacity-50 disabled:cursor-not-allowed"
+            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
           >
-            <Camera size={20} />
-            Capture
-          </Button>
+            <div className="absolute inset-2 rounded-full bg-white" />
+          </motion.button>
         </div>
       </div>
     </motion.div>
