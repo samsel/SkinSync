@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
+import { Camera, ShieldCheck } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
-import { CameraIcon } from './CameraIcon';
 
 const LandingScreen: React.FC = () => {
   const { setCurrentStep } = useAppStore();
@@ -64,7 +63,7 @@ const LandingScreen: React.FC = () => {
             size="lg" 
             className="rounded-full px-8 py-6 text-lg flex items-center gap-3 w-full justify-center"
           >
-            <CameraIcon className="w-6 h-6" />
+            <Camera className="w-6 h-6" />
             Take a snap
           </Button>
         </motion.div>
