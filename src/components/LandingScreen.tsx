@@ -41,22 +41,21 @@ const LandingScreen: React.FC = () => {
       exit={{ opacity: 0 }}
     >
       <motion.div 
-        className="mb-8"
+        className="flex items-center gap-4 mb-8"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Logo className="w-32 h-32" />
+        <Logo className="w-20 h-20" />
+        <motion.h1 
+          className="text-5xl font-bold text-primary"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          SkinSync
+        </motion.h1>
       </motion.div>
-      
-      <motion.h1 
-        className="text-5xl font-bold mb-4 text-primary"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        SkinSync
-      </motion.h1>
       
       <motion.p 
         className="text-xl mb-12 max-w-md mx-auto text-gray-300"
