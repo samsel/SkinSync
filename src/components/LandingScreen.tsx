@@ -51,7 +51,7 @@ const LandingScreen: React.FC = () => {
                 Sync your natural beauty and makeup
               </h2>
               <p className="text-sm font-light text-gray-300">
-                Our AI analyzes your skin & recommends products that enhance your beauty
+                Take picture of you face and uur AI will analyze your skin & recommend products that enhance your beauty
               </p>
             </div>
           </div>
@@ -76,7 +76,6 @@ const LandingScreen: React.FC = () => {
             </span>
           </Button>
         </motion.div>
-        <span className="">With just a photo you can see SkinSync recommendations instantly. Try now.</span>
       </main>
 
       <motion.footer 
