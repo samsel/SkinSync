@@ -46,7 +46,7 @@ const LandingScreen: React.FC = () => {
           Take a selfie to{' '}
           <span className="relative inline-block">
             discover your perfect makeup matches
-            <span className="absolute left-0 right-0 bottom-1 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full blur-[1px] transform -skew-x-12"></span>
+            <span className="absolute left-0 right-0 bottom-0 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full blur-[1px] transform -skew-x-12"></span>
           </span>
           {' '}Our AI analyzes your unique features to find products that complement your natural beauty.
         </motion.p>
