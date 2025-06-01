@@ -46,9 +46,11 @@ const CameraCapture: React.FC = () => {
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <div className="text-red-500 mb-4">{error}</div>
-        <Button onClick={handleCancel}>Go Back</Button>
+      <div className="fixed inset-0 flex items-center justify-center bg-black p-4">
+        <div className="text-center">
+          <p className="text-red-400 mb-4">{error}</p>
+          <Button onClick={handleCancel} variant="primary">Go Back</Button>
+        </div>
       </div>
     );
   }
@@ -61,45 +63,64 @@ const CameraCapture: React.FC = () => {
       exit={{ opacity: 0 }}
     >
       {/* Close button */}
-      <div className="absolute top-safe right-4 z-10 pt-4">
+      <motion.div 
+        className="absolute top-safe right-4 z-10 pt-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <Button 
           variant="ghost" 
           size="icon" 
-          onClick={handleCancel} 
-          className="text-white bg-black/20 backdrop-blur-sm hover:bg-white/10"
+          onClick={handleCancel}
+          className="bg-black/20 backdrop-blur-sm hover:bg-white/10 text-white"
         >
-          <X />
+          <X className="w-5 h-5" />
         </Button>
-      </div>
+      </motion.div>
 
-      {/* Camera container with proper aspect ratio */}
+      {/* Camera view */}
       <div className="relative h-full">
-        <div className="absolute inset-0">
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            videoConstraints={videoConstraints}
-            onUserMedia={handleCameraReady}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          videoConstraints={videoConstraints}
+          onUserMedia={handleCameraReady}
+          className="h-full w-full object-cover"
+        />
 
-        {/* Overlay with guide circle */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
+        {/* Guide overlay */}
+        <motion.div 
+          className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          {/* Face guide circle */}
           <div className="relative w-[80vw] max-w-[400px] aspect-square">
-            <div className="absolute inset-0 border-2 border-dashed border-white/70 rounded-full" />
+            <motion.div 
+              className="absolute inset-0 border-2 border-dashed border-white/70 rounded-full"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.4, type: "spring" }}
+            />
           </div>
-        </div>
+        </motion.div>
 
         {/* Guidance text */}
-        <div className="absolute left-4 right-4 bottom-32 text-center">
+        <motion.div 
+          className="absolute left-4 right-4 bottom-32 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           <div className="inline-block px-6 py-3 bg-black/40 backdrop-blur-sm rounded-2xl">
             <p className="text-white/90 text-lg">
               Position your face within the circle
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Capture button */}
         <motion.div 
@@ -112,16 +133,23 @@ const CameraCapture: React.FC = () => {
             <motion.button
               onClick={handleCapture}
               disabled={!isCameraReady}
-              className={`w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center focus:outline-none ${
+              className={`relative w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center focus:outline-none ${
                 !isCameraReady ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
               }`}
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <div className="absolute inset-2 rounded-full border-4 border-gray-100 flex items-center justify-center">
-                <Camera className="w-8 h-8 text-gray-600" />
-              </div>
+              <motion.div 
+                className="absolute inset-2 rounded-full border-4 border-gray-100"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="w-full h-full flex items-center justify-center">
+                  <Camera className="w-8 h-8 text-gray-600" />
+                </div>
+              </motion.div>
             </motion.button>
           </div>
         </motion.div>
