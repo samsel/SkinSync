@@ -14,12 +14,12 @@ const LandingScreen: React.FC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col min-h-screen"
+      className="flex flex-col min-h-[100dvh]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="flex-grow flex flex-col items-center justify-center px-4 py-16 text-center">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         <motion.div 
           className="flex items-center gap-4 mb-8"
           initial={{ scale: 0.9, opacity: 0 }}
@@ -67,16 +67,16 @@ const LandingScreen: React.FC = () => {
             Take a snap
           </Button>
         </motion.div>
-      </div>
+      </main>
 
       <motion.footer 
-        className="w-full py-6 px-4 border-t border-gray-800 mt-auto"
+        className="w-full py-4 px-4 border-t border-gray-800 mt-auto bg-gray-900/80 backdrop-blur-sm"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 text-xs text-gray-400 text-center">
-          <ShieldCheck size={16} className="flex-shrink-0 text-primary-400" />
+        <div className="max-w-2xl mx-auto flex items-center justify-center gap-2 text-xs text-gray-400">
+          <ShieldCheck size={14} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
         </div>
       </motion.footer>
