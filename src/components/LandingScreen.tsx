@@ -78,14 +78,14 @@ className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-
         </motion.div>
       </main>
 
-      <motion.footer 
-        className="w-full py-2 px-4 border-t border-gray-800/30 mt-auto bg-gray-900/60 backdrop-blur-sm safe-bottom"
+ <motion.footer Add commentMore actions
+        className="w-full py-4 px-4 border-t border-gray-800/50 mt-auto bg-gray-900/80 backdrop-blur-sm"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-2xl mx-auto flex items-center justify-center gap-2 text-[10px] font-extralight text-gray-400">
-          <ShieldCheck size={12} className="flex-shrink-0 text-primary-400" />
+        <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-sm font-light text-gray-400">
+          <ShieldCheck size={18} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters. Photos are analyzed instantly and never stored.</span>
         </div>
       </motion.footer>
