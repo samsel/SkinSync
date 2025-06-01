@@ -25,6 +25,7 @@ const CameraCapture: React.FC = () => {
   }, [cleanup]);
 
   const handleCapture = () => {
+    if (!isCameraReady) return;
     const imageSrc = captureImage();
     if (imageSrc) {
       setCapturedImage(imageSrc);
@@ -101,26 +102,29 @@ const CameraCapture: React.FC = () => {
         </div>
 
         {/* Capture button */}
-        <div className="absolute inset-x-0 bottom-0 pb-8 pt-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+        <motion.div 
+          className="absolute inset-x-0 bottom-0 pb-8 pt-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
           <div className="flex justify-center">
-            <Button
+            <motion.button
               onClick={handleCapture}
               disabled={!isCameraReady}
-              className="w-20 h-20 rounded-full p-0 relative overflow-hidden group disabled:opacity-50"
+              className={`w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center focus:outline-none ${
+                !isCameraReady ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              }`}
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-white"
-                whileTap={{ scale: 0.9 }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              >
-                <div className="absolute inset-2 rounded-full border-4 border-gray-100 flex items-center justify-center">
-                  <Camera className="w-8 h-8 text-gray-600" />
-                </div>
-              </motion.div>
-            </Button>
+              <div className="absolute inset-2 rounded-full border-4 border-gray-100 flex items-center justify-center">
+                <Camera className="w-8 h-8 text-gray-600" />
+              </div>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );
