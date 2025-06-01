@@ -76,6 +76,7 @@ const LandingScreen: React.FC = () => {
             </span>
           </Button>
         </motion.div>
+        <span>to see SkinSync recommendations</span>
       </main>
 
       <motion.footer 
