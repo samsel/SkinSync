@@ -77,7 +77,7 @@ const LandingScreen: React.FC = () => {
       >
         <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-sm text-gray-400">
           <ShieldCheck size={24} className="flex-shrink-0 text-primary-400" />
-          <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
+          <span>Your privacy matters! This app doesn't store any photos - they're analyzed instantly and deleted.</span>
         </div>
       </motion.footer>
     </motion.div>
