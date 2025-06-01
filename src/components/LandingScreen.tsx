@@ -63,12 +63,12 @@ const LandingScreen: React.FC = () => {
           transition={{ delay: 0.5 }}
           className="relative px-4"
         >
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full blur-[2px] opacity-40 transition duration-500"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <Button 
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="relative h-14 sm:h-16 rounded-full text-xl sm:text-2xl font-medium px-8 sm:px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border border-primary-400/20 w-full sm:w-auto"
+            className="relative h-14 sm:h-16 rounded-full text-xl sm:text-2xl font-medium px-8 sm:px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20 w-full sm:w-auto"
           >
             <span className="flex items-center justify-center gap-3">
               <Camera className="w-6 h-6 sm:w-7 sm:h-7" />
