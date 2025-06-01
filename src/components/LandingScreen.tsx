@@ -100,16 +100,16 @@ const LandingScreen: React.FC = () => {
 
         {/* Value Proposition Cards */}
         <motion.div 
-          className="w-full max-w-5xl mx-auto px-4 mb-8"
+          className="w-full max-w-5xl mx-auto px-4 mb-8 overflow-x-auto pb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="flex flex-row gap-4 min-w-max px-2">
             {valueProps.map((prop, index) => (
               <motion.div
                 key={prop.title}
-                className="relative group"
+                className="relative group w-[280px]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: prop.delay }}
