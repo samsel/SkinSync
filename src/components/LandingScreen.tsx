@@ -51,7 +51,7 @@ const LandingScreen: React.FC = () => {
                 Discover your perfect makeup match
               </h2>
               <p className="text-sm font-light text-gray-300">
-                Our AI analyzes your unique features to curate products that enhance your natural beauty
+                Our AI analyzes your skin to curate products that enhance your natural beauty
               </p>
             </div>
           </div>
