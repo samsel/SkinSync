@@ -51,7 +51,7 @@ const LandingScreen: React.FC = () => {
                 your natural beauty + makeup = sync
               </h2>
               <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
-                SELFIE | SLAY.
+                SELFIE | SLAY
               </p>
                             <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
                 Get beauty recs powered by AI that actually gets you.
