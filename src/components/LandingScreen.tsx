@@ -38,15 +38,20 @@ const LandingScreen: React.FC = () => {
         </motion.div>
         
         <motion.p 
-          className="text-xl mb-12 max-w-2xl mx-auto text-gray-300"
+          className="text-xl mb-12 max-w-2xl mx-auto text-gray-300 px-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
           Take a selfie to{' '}
-          <span className="relative inline-block">
+          <span className="relative inline-block pb-2">
             discover your perfect makeup matches
-            <span className="absolute left-0 right-0 bottom-0 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full blur-[1px] transform -skew-x-12"></span>
+            <motion.span 
+              className="absolute left-0 right-0 -bottom-1 h-[6px] bg-gradient-to-r from-primary-400/20 via-primary-400/40 to-primary-400/20 rounded-full transform -skew-x-12"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            ></motion.span>
           </span>
           {' '}Our AI analyzes your unique features to find products that complement your natural beauty.
         </motion.p>
@@ -70,12 +75,12 @@ const LandingScreen: React.FC = () => {
       </div>
 
       <motion.footer 
-        className="w-full py-4 px-4 border-t border-gray-800"
+        className="w-full py-6 px-4 border-t border-gray-800 mt-auto"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-2xl mx-auto flex items-center justify-center gap-2 text-sm text-gray-400 whitespace-nowrap">
+        <div className="max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 text-sm text-gray-400 text-center">
           <ShieldCheck size={20} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
         </div>
