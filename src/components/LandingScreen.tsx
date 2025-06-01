@@ -20,13 +20,13 @@ const LandingScreen: React.FC = () => {
       delay: 0.2
     },
     {
-      title: "AI Analysis",
-      description: "Get instant analysis of your unique skin",
+      title: "Our AI Analyzes your Selfie",
+      description: "",
       delay: 0.3
     },
     {
-      title: "Perfect Match",
-      description: "Discover makeup that works for you",
+      title: "Discover makeup that works for you",
+      description: "",
       delay: 0.4
     }
   ];
