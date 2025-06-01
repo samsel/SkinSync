@@ -87,17 +87,20 @@ const CameraCapture: React.FC = () => {
         </div>
       </div>
 
-      {/* Circular capture button */}
-      <div className="mt-12">
-        <motion.button
-          onClick={handleCapture}
-          disabled={!isCameraReady}
-          className="relative w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-4 border-white disabled:opacity-50 disabled:cursor-not-allowed"
-          whileTap={{ scale: 0.9 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="absolute inset-2 rounded-full bg-white" />
-        </motion.button>
+      {/* Capture button container with improved spacing */}
+      <div className="fixed bottom-0 left-0 right-0 pb-16 pt-8 bg-gradient-to-t from-black/80 to-transparent">
+        <div className="flex justify-center">
+          <motion.button
+            onClick={handleCapture}
+            disabled={!isCameraReady}
+            className="relative w-24 h-24 rounded-full bg-white/10 backdrop-blur-sm p-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="absolute inset-3 rounded-full bg-white shadow-lg" />
+            <div className="absolute inset-5 rounded-full border-2 border-black/10" />
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
