@@ -53,7 +53,7 @@ const CameraCapture: React.FC = () => {
 
   return (
     <motion.div 
-      className="relative h-full flex flex-col items-center justify-center bg-black"
+      className="relative h-full flex flex-col items-center justify-start pt-8 bg-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -85,19 +85,19 @@ const CameraCapture: React.FC = () => {
             Position your face within the circle
           </div>
         </div>
-        
-        {/* Circular capture button */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <motion.button
-            onClick={handleCapture}
-            disabled={!isCameraReady}
-            className="relative w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-4 border-white disabled:opacity-50 disabled:cursor-not-allowed"
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="absolute inset-2 rounded-full bg-white" />
-          </motion.button>
-        </div>
+      </div>
+
+      {/* Circular capture button */}
+      <div className="mt-12">
+        <motion.button
+          onClick={handleCapture}
+          disabled={!isCameraReady}
+          className="relative w-20 h-20 rounded-full bg-white/10 backdrop-blur-sm border-4 border-white disabled:opacity-50 disabled:cursor-not-allowed"
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="absolute inset-2 rounded-full bg-white" />
+        </motion.button>
       </div>
     </motion.div>
   );
