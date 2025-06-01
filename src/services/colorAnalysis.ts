@@ -6,6 +6,7 @@ interface LlamaAnalysisResponse {
     complexion: SkinAnalysisResult['complexion'];
     skinType: SkinAnalysisResult['skinType'];
   };
+  error?: string;
 }
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim();
@@ -20,7 +21,7 @@ if (!SUPABASE_ANON_KEY) {
   throw new Error('Missing Supabase anonymous key configuration');
 }
 
-async function analyzeFaceWithLlama(imageData: string): Promise<SkinAnalysisResult> {
+async function analyzeFaceWithLlama(imageData: string): Promise<SkinAnalysisResult | { error: string }> {
   try {
     console.log('Starting Llama API analysis through Supabase Edge Function...');
     const startTime = performance.now();
@@ -50,8 +51,12 @@ async function analyzeFaceWithLlama(imageData: string): Promise<SkinAnalysisResu
       throw new Error(`Edge Function error: ${response.statusText}`);
     }
 
-    const result = await response.json() as LlamaAnalysisResponse;
+    const result = await response.json();
     console.log('Edge Function analysis result:', result);
+
+    if (result.error) {
+      return { error: result.error };
+    }
     
     if (!result.analysis) {
       throw new Error('Invalid response format from Llama API');
@@ -64,15 +69,14 @@ async function analyzeFaceWithLlama(imageData: string): Promise<SkinAnalysisResu
   }
 }
 
-export const analyzeSkinTone = async (imageData: string): Promise<SkinAnalysisResult> => {
+export const analyzeSkinTone = async (imageData: string): Promise<SkinAnalysisResult | { error: string }> => {
   try {
     console.log('Starting skin tone analysis...');
-    const analysis = await analyzeFaceWithLlama(imageData);
-    
-    console.log('Skin tone analysis completed successfully:', analysis);
-    return analysis;
+    const result = await analyzeFaceWithLlama(imageData);
+    console.log('Skin tone analysis completed:', result);
+    return result;
   } catch (error) {
     console.error('Skin analysis failed:', error);
-    throw new Error('Unable to analyze skin tone. Please check your API configuration or try again later.');
+    throw new Error('Unable to analyze skin tone. Please try again.');
   }
 };
