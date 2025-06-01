@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, ShieldCheck } from 'lucide-react';
+import { Camera, ShieldCheck, Camera as CameraIcon, Sparkles, ShoppingBag } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
@@ -11,6 +11,27 @@ const LandingScreen: React.FC = () => {
   const handleStartCapture = () => {
     setCurrentStep('camera');
   };
+
+  const valueProps = [
+    {
+      icon: CameraIcon,
+      title: "Quick Selfie",
+      description: "Take a simple selfie in natural light",
+      delay: 0.2
+    },
+    {
+      icon: Sparkles,
+      title: "AI Analysis",
+      description: "Our AI analyzes your unique skin characteristics",
+      delay: 0.3
+    },
+    {
+      icon: ShoppingBag,
+      title: "Perfect Matches",
+      description: "Get instant makeup recommendations that work for you",
+      delay: 0.4
+    }
+  ];
 
   return (
     <motion.div 
@@ -50,25 +71,25 @@ const LandingScreen: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
                 your natural beauty + makeup = sync
               </h2>
-                            <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
+              <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
                 Get beauty recs powered by AI that actually gets you.
               </p>
             </div>
           </div>
         </motion.div>
-        
+
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="relative px-4"
+          className="relative px-4 mb-12"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <Button 
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20"
+            className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20"
           >
             <span className="flex items-center justify-center gap-3">
               <Camera className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -76,10 +97,41 @@ className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-
             </span>
           </Button>
         </motion.div>
+
+        {/* Value Proposition Cards */}
+        <motion.div 
+          className="w-full max-w-5xl mx-auto px-4 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {valueProps.map((prop, index) => (
+              <motion.div
+                key={prop.title}
+                className="relative group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: prop.delay }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 rounded-xl blur-xl transform group-hover:scale-105 transition-transform duration-300" />
+                <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="p-3 bg-primary-500/20 rounded-full mb-4">
+                      <prop.icon className="w-6 h-6 text-primary-400" />
+                    </div>
+                    <h3 className="text-lg font-medium text-white mb-2">{prop.title}</h3>
+                    <p className="text-sm text-gray-300">{prop.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </main>
 
- <motion.footer Add commentMore actions
-        className="w-full py-4 px-4 border-t border-gray-800/50 mt-auto bg-gray-900/80 backdrop-blur-sm"
+      <motion.footer
+        className="w-full py-3 px-4 border-t border-gray-800/50 mt-auto bg-gray-900/80 backdrop-blur-sm"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
