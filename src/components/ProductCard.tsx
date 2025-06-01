@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
       transition={{ duration: 0.3 }}
     >
       <div className="p-4 flex-grow">
-        <div className="inline-block px-2 py-1 bg-primary/20 text-primary text-xs rounded-md mb-3">
+        <div className="inline-block px-2 py-1 bg-primary-700/20 text-primary-400 text-xs rounded-md mb-3">
           {product.category}
         </div>
         
