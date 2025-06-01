@@ -5,10 +5,14 @@ export const useCamera = () => {
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const webcamRef = useRef<Webcam>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
   // Handle camera ready state
   const handleCameraReady = useCallback(() => {
     console.log('Camera ready');
+    if (webcamRef.current?.video?.srcObject) {
+      streamRef.current = webcamRef.current.video.srcObject as MediaStream;
+    }
     setIsCameraReady(true);
     setError(null);
   }, []);
@@ -38,14 +42,27 @@ export const useCamera = () => {
   const cleanup = useCallback(() => {
     console.log('Cleaning up camera resources');
     try {
-      if (webcamRef.current?.video?.srcObject) {
+      // First try to get the stream from our ref
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => {
+          console.log('Stopping track:', track.kind);
+          track.stop();
+        });
+        streamRef.current = null;
+      }
+      // Also check webcam ref as backup
+      else if (webcamRef.current?.video?.srcObject) {
         const stream = webcamRef.current.video.srcObject as MediaStream;
         stream.getTracks().forEach(track => {
           console.log('Stopping track:', track.kind);
           track.stop();
         });
+      }
+      
+      if (webcamRef.current?.video) {
         webcamRef.current.video.srcObject = null;
       }
+      
       setIsCameraReady(false);
       setError(null);
     } catch (error) {

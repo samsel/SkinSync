@@ -45,9 +45,7 @@ const CameraCapture: React.FC = () => {
   const handleCancel = () => {
     console.log('Cancel button clicked, cleaning up...');
     cleanup(); // Stop the camera before navigating away
-    setTimeout(() => {
-      setCurrentStep('landing');
-    }, 100); // Small delay to ensure cleanup completes
+    setCurrentStep('landing');
   };
 
   const videoConstraints = {
