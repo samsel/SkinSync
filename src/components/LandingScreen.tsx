@@ -79,7 +79,7 @@ const LandingScreen: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="relative px-4 mb-12"
+          className="relative px-4 mb-8"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
           <Button 
@@ -97,7 +97,7 @@ const LandingScreen: React.FC = () => {
 
         {/* Value Proposition Cards */}
         <motion.div 
-          className="w-full max-w-5xl mx-auto px-4 mb-8"
+          className="w-full max-w-5xl mx-auto px-4 mt-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
@@ -125,7 +125,7 @@ const LandingScreen: React.FC = () => {
       </main>
 
       <motion.footer
-        className="w-full py-3 px-4 border-t border-gray-800/50 mt-auto bg-gray-900/80 backdrop-blur-sm"
+        className="w-full py-3 px-4 border-t border-gray-800/50 bg-gray-900/80 backdrop-blur-sm"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
