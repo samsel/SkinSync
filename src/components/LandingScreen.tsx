@@ -20,7 +20,7 @@ const LandingScreen: React.FC = () => {
     },
     {
       title: "AI Analysis",
-      description: "Get instant analysis of your unique features",
+      description: "Get instant analysis of your unique skin",
       delay: 0.3
     },
     {
