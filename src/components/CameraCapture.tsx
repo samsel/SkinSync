@@ -78,6 +78,18 @@ const CameraCapture: React.FC = () => {
         <X className="w-6 h-6" />
       </motion.button>
 
+      {/* Guidance text - Now at the top */}
+      <motion.div 
+        className="absolute inset-x-0 top-12 z-10 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <p className="text-white/90 text-lg font-light">
+          Position your face within the circle
+        </p>
+      </motion.div>
+
       {/* Camera view */}
       <div className="relative h-full">
         <Webcam
@@ -89,6 +101,13 @@ const CameraCapture: React.FC = () => {
           className="h-full w-full object-cover"
           mirrored
         />
+
+        {/* Guide overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
+            <div className="w-72 h-72 rounded-full border-2 border-white/30" />
+          </div>
+        </div>
 
         {/* Capture button area */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-black/40 backdrop-blur-sm flex items-center justify-center">
@@ -102,18 +121,6 @@ const CameraCapture: React.FC = () => {
           >
             <div className="w-16 h-16 rounded-full bg-white" />
           </motion.button>
-        </div>
-
-        {/* Guide overlay */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
-            <div className="w-72 h-72 rounded-full border-2 border-white/30" />
-          </div>
-          <div className="absolute inset-x-0 bottom-40 text-center">
-            <p className="text-white/80 text-lg font-light">
-              Position your face within the circle
-            </p>
-          </div>
         </div>
       </div>
     </motion.div>
