@@ -70,7 +70,7 @@ const LandingScreen: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <div className="max-w-md mx-auto flex items-center justify-center gap-2 text-sm text-gray-400">
+        <div className="max-w-2xl mx-auto flex items-center justify-center gap-2 text-sm text-gray-400 whitespace-nowrap">
           <ShieldCheck size={20} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
         </div>
