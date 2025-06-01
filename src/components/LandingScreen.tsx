@@ -37,14 +37,19 @@ const LandingScreen: React.FC = () => {
           </motion.h1>
         </motion.div>
         
-        <motion.p 
-          className="text-xl mb-12 max-w-2xl mx-auto text-gray-300 px-2"
+        <motion.div 
+          className="mb-12 max-w-2xl mx-auto px-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Take a selfie to discover your perfect makeup matches. Our AI analyzes your unique features to find products that complement your natural beauty.
-        </motion.p>
+          <p className="text-xl mb-2 text-gray-300">
+            Take a selfie to discover your perfect makeup matches.
+          </p>
+          <p className="text-sm font-light text-gray-400">
+            Our AI analyzes your unique features to find products that complement your natural beauty.
+          </p>
+        </motion.div>
         
         <motion.div
           initial={{ y: 20, opacity: 0 }}
