@@ -48,7 +48,7 @@ const LandingScreen: React.FC = () => {
             <div className="absolute inset-0 bg-primary-950/30"></div>
             <div className="relative">
               <h2 className="text-3xl font-light mb-1 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
-                 natural beauty needs natural makeup
+                 your natural beauty + makeup
               </h2>
               <p className="text-sm font-light text-gray-300">
                 Selfie. Scan. Slay. Get beauty recs powered by AI that actually get you.
