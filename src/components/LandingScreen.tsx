@@ -38,17 +38,23 @@ const LandingScreen: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="mb-16 max-w-2xl mx-auto px-2"
+          className="mb-16 max-w-2xl mx-auto px-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <p className="text-2xl mb-4 text-white font-light">
-            Discover your perfect makeup match
-          </p>
-          <p className="text-lg font-light text-gray-300">
-            Our AI analyzes your unique features to curate products that enhance your natural beauty
-          </p>
+          <div className="relative p-8 rounded-2xl overflow-hidden backdrop-blur-sm border border-primary-500/20">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10"></div>
+            <div className="absolute inset-0 bg-primary-950/30"></div>
+            <div className="relative">
+              <h2 className="text-3xl font-light mb-4 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
+                Discover your perfect makeup match
+              </h2>
+              <p className="text-lg font-light text-gray-300">
+                Our AI analyzes your unique features to curate products that enhance your natural beauty
+              </p>
+            </div>
+          </div>
         </motion.div>
         
         <motion.div
