@@ -96,12 +96,7 @@ const LandingScreen: React.FC = () => {
         </motion.div>
 
         {/* Value Proposition Cards */}
-        <motion.div 
-          className="w-full max-w-5xl mx-auto px-4 mt-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
+
           <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {valueProps.map((prop, index) => (
               <motion.div
@@ -121,7 +116,7 @@ const LandingScreen: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+ 
       </main>
 
       <motion.footer
