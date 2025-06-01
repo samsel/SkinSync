@@ -16,6 +16,12 @@ const ProductRecommendations: React.FC = () => {
     setCurrentStep('camera');
   };
 
+  // Calculate total number of recommendations
+  const totalRecommendations = Object.values(recommendations).reduce(
+    (sum, products) => sum + products.length, 
+    0
+  );
+
   return (
     <motion.div 
       className="flex flex-col h-full pb-6"
@@ -23,7 +29,7 @@ const ProductRecommendations: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="flex items-center justify-between px-4 py-3 border-b dark:border-gray-800">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
         <Button 
           variant="ghost" 
           size="sm" 
@@ -33,7 +39,6 @@ const ProductRecommendations: React.FC = () => {
           <ChevronLeft size={16} />
           Home
         </Button>
-        <h1 className="text-xl font-bold">Your Matches</h1>
         <Button
           variant="ghost"
           size="sm"
@@ -46,17 +51,24 @@ const ProductRecommendations: React.FC = () => {
       </div>
 
       {skinAnalysis && (
-        <div className="bg-gray-50 dark:bg-gray-800/50 p-4 mb-4">
-          <h2 className="text-lg font-medium mb-2">Your Skin Analysis</h2>
+        <div className="bg-gray-50 p-6 mb-4">
+          <h2 className="text-2xl font-medium mb-3">
+            Wow! I've found {totalRecommendations} matches for you! 🎉
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Based on your skin analysis, you have a {skinAnalysis.undertone} undertone, 
+            {' '}{skinAnalysis.complexion} complexion, and {skinAnalysis.skinType} skin type. 
+            Check out these awesome personalized options below!
+          </p>
           <div className="flex flex-wrap gap-3">
-            <div className="bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-sm">
-              Undertone: <span className="font-medium capitalize">{skinAnalysis.undertone}</span>
+            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+              {skinAnalysis.undertone} undertone
             </div>
-            <div className="bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-sm">
-              Complexion: <span className="font-medium capitalize">{skinAnalysis.complexion}</span>
+            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+              {skinAnalysis.complexion} complexion
             </div>
-            <div className="bg-white dark:bg-gray-800 px-3 py-1 rounded-full text-sm">
-              Skin Type: <span className="font-medium capitalize">{skinAnalysis.skinType}</span>
+            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+              {skinAnalysis.skinType} skin
             </div>
           </div>
         </div>
@@ -67,10 +79,10 @@ const ProductRecommendations: React.FC = () => {
           {PRODUCT_CATEGORIES.map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 rounded-full text-sm whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 rounded-md text-sm whitespace-nowrap transition-colors ${
                 activeCategory === category
                   ? 'bg-primary text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                  : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
               }`}
               onClick={() => setActiveCategory(category)}
             >
@@ -103,7 +115,7 @@ const ProductRecommendations: React.FC = () => {
           </Swiper>
         ) : (
           <div className="flex items-center justify-center h-full">
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500">
               No recommendations available for {activeCategory}
             </p>
           </div>
