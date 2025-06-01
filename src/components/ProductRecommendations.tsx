@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Redo2, Sparkles } from 'lucide-react';
+import { ChevronLeft, Redo2 } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
+import { Logo } from './Logo';
 
 const ProductRecommendations: React.FC = () => {
   const { recommendations, skinAnalysis, setCurrentStep } = useAppStore();
@@ -51,19 +52,12 @@ const ProductRecommendations: React.FC = () => {
         <div className="bg-primary-50 px-4 py-8 md:py-12 mb-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
-              <motion.div 
-                className="bg-primary text-white p-2 rounded-lg"
-                animate={{ 
-                  rotate: [0, 15, -15, 0],
-                  scale: [1, 1.2, 1.2, 1]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
+              <motion.div
+                initial={{ rotate: 0 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Sparkles size={24} />
+                <Logo className="w-10 h-10" />
               </motion.div>
               <motion.h2 
                 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-900 bg-clip-text text-transparent"

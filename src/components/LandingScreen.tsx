@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Camera, Moon, Sun } from 'lucide-react';
+import { Camera, Moon, Sun } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { useTheme } from '../hooks/useTheme';
+import { Logo } from './Logo';
 
 const LandingScreen: React.FC = () => {
   const { setCurrentStep } = useAppStore();
@@ -37,9 +38,7 @@ const LandingScreen: React.FC = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white">
-          <Sparkles size={32} />
-        </div>
+        <Logo className="w-20 h-20" />
       </motion.div>
       
       <motion.h1 
