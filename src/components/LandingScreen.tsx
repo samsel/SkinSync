@@ -111,7 +111,7 @@ const LandingScreen: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: prop.delay }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 rounded-xl blur-xl transform group-hover:scale-105 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 blur-xl transform group-hover:scale-105 transition-transform duration-300" />
                 <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-3 sm:p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
                   <div className="flex flex-col items-center text-center">
                     <h3 className="text-sm sm:text-lg font-medium text-white mb-1 sm:mb-2">{prop.title}</h3>
