@@ -31,7 +31,6 @@ export const useCamera = () => {
       }
       return imageSrc;
     } catch (error) {
-      console.error('Failed to capture image:', error);
       setError('Failed to capture image');
       return null;
     }
@@ -60,7 +59,7 @@ export const useCamera = () => {
       setIsCameraReady(false);
       setError(null);
     } catch (error) {
-      console.error('Error during cleanup:', error);
+      setError('Error during cleanup');
     }
   }, []);
 
