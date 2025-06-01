@@ -51,7 +51,7 @@ const LandingScreen: React.FC = () => {
                 Sync your natural beauty and makeup
               </h2>
               <p className="text-sm font-light text-gray-300">
-                Take picture of you face and our AI will analyze your skin & recommend products that enhance your beauty
+                Selfie. Scan. Slay. Get beauty recs powered by AI that actually get you.
               </p>
             </div>
           </div>
