@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Sparkles, Zap, ShoppingBag } from 'lucide-react';
+import { Camera, Sparkles, Zap, ShoppingBag, ShieldCheck } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
@@ -70,6 +70,7 @@ const LandingScreen: React.FC = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
+        className="flex flex-col items-center gap-4"
       >
         <Button 
           onClick={handleStartCapture}
@@ -80,6 +81,16 @@ const LandingScreen: React.FC = () => {
           <Camera size={20} />
           Take a snap
         </Button>
+
+        <motion.div 
+          className="flex items-center gap-2 text-sm text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <ShieldCheck size={16} className="text-primary-400" />
+          <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
+        </motion.div>
       </motion.div>
       
       <motion.div 
