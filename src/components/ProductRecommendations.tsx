@@ -50,22 +50,33 @@ const ProductRecommendations: React.FC = () => {
       {skinAnalysis && (
         <div className="bg-primary-50 px-4 py-8 md:py-12 mb-6">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-primary text-white p-2 rounded-lg">
+            <div className="flex items-center gap-3 mb-6">
+              <motion.div 
+                className="bg-primary text-white p-2 rounded-lg"
+                animate={{ 
+                  rotate: [0, 15, -15, 0],
+                  scale: [1, 1.2, 1.2, 1]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
                 <Sparkles size={24} />
-              </div>
+              </motion.div>
               <motion.h2 
-                className="text-2xl md:text-3xl font-semibold text-gray-900"
+                className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-900 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Wow! I've found {totalRecommendations} matches for you! 🎉
+                Wow! I've found {totalRecommendations} matches for you
               </motion.h2>
             </div>
 
             <motion.p 
-              className="text-lg text-gray-600 mb-6"
+              className="text-lg text-gray-600 mb-8 font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -79,24 +90,36 @@ const ProductRecommendations: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <div className="bg-white rounded-lg p-4 shadow-sm border border-primary-100">
-                <div className="text-sm text-gray-500 mb-1">Your undertone</div>
-                <div className="text-lg font-medium text-gray-900 capitalize">
+              <motion.div 
+                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="text-sm text-primary-600 font-medium mb-1">Your undertone</div>
+                <div className="text-2xl font-semibold text-gray-900 capitalize">
                   {skinAnalysis.undertone}
                 </div>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm border border-primary-100">
-                <div className="text-sm text-gray-500 mb-1">Your complexion</div>
-                <div className="text-lg font-medium text-gray-900 capitalize">
+              </motion.div>
+              <motion.div 
+                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="text-sm text-primary-600 font-medium mb-1">Your complexion</div>
+                <div className="text-2xl font-semibold text-gray-900 capitalize">
                   {skinAnalysis.complexion}
                 </div>
-              </div>
-              <div className="bg-white rounded-lg p-4 shadow-sm border border-primary-100">
-                <div className="text-sm text-gray-500 mb-1">Your skin type</div>
-                <div className="text-lg font-medium text-gray-900 capitalize">
+              </motion.div>
+              <motion.div 
+                className="bg-white rounded-lg p-6 shadow-sm border border-primary-100"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="text-sm text-primary-600 font-medium mb-1">Your skin type</div>
+                <div className="text-2xl font-semibold text-gray-900 capitalize">
                   {skinAnalysis.skinType}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
