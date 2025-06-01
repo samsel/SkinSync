@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Camera, ShieldCheck } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
-import { Logo } from './Logo';
 import SkinToneStrip from './UI/SkinToneStrip';
 
 const LandingScreen: React.FC = () => {
@@ -12,8 +11,6 @@ const LandingScreen: React.FC = () => {
   const handleStartCapture = () => {
     setCurrentStep('camera');
   };
-
-
 
   return (
     <motion.div 
@@ -25,14 +22,13 @@ const LandingScreen: React.FC = () => {
       <SkinToneStrip />
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-4 safe-top safe-bottom">
         <motion.div 
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 sm:mb-8 px-4"
+          className="w-full max-w-4xl mx-auto mb-12 sm:mb-16 px-4 sm:px-8"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Logo className="w-16 h-16 sm:w-20 sm:h-20 text-primary-400" />
           <motion.h1 
-            className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
+            className="text-5xl sm:text-7xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text pb-4"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
