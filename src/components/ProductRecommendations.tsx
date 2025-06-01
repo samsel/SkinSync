@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Redo2 } from 'lucide-react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import ProductCard from './ProductCard';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
-import { PRODUCT_CATEGORIES } from '../lib/supabase';
 
 const ProductRecommendations: React.FC = () => {
   const { recommendations, skinAnalysis, setCurrentStep } = useAppStore();
-  const [activeCategory, setActiveCategory] = useState(PRODUCT_CATEGORIES[0]);
 
   const handleRetake = () => {
     setCurrentStep('camera');
@@ -21,6 +17,9 @@ const ProductRecommendations: React.FC = () => {
     (sum, products) => sum + products.length, 
     0
   );
+
+  // Combine all products into a single array
+  const allProducts = Object.values(recommendations).flat();
 
   return (
     <motion.div 
@@ -51,8 +50,8 @@ const ProductRecommendations: React.FC = () => {
       </div>
 
       {skinAnalysis && (
-        <div className="bg-gray-50 p-6 mb-4">
-          <h2 className="text-2xl font-medium mb-3">
+        <div className="bg-white p-6 mb-4 border-b border-gray-100">
+          <h2 className="text-2xl font-medium mb-3 text-gray-900">
             Wow! I've found {totalRecommendations} matches for you! 🎉
           </h2>
           <p className="text-gray-600 mb-4">
@@ -61,62 +60,30 @@ const ProductRecommendations: React.FC = () => {
             Check out these awesome personalized options below!
           </p>
           <div className="flex flex-wrap gap-3">
-            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+            <div className="bg-gray-50 px-3 py-1 rounded-md text-sm text-gray-900">
               {skinAnalysis.undertone} undertone
             </div>
-            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+            <div className="bg-gray-50 px-3 py-1 rounded-md text-sm text-gray-900">
               {skinAnalysis.complexion} complexion
             </div>
-            <div className="bg-white px-3 py-1 rounded-md text-sm border border-gray-100">
+            <div className="bg-gray-50 px-3 py-1 rounded-md text-sm text-gray-900">
               {skinAnalysis.skinType} skin
             </div>
           </div>
         </div>
       )}
 
-      <div className="px-4 mb-4 overflow-x-auto">
-        <div className="flex space-x-2">
-          {PRODUCT_CATEGORIES.map((category) => (
-            <button
-              key={category}
-              className={`px-4 py-2 rounded-md text-sm whitespace-nowrap transition-colors ${
-                activeCategory === category
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
-              }`}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
+      <div className="flex-grow px-4 overflow-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {allProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
-      </div>
-
-      <div className="flex-grow px-4 overflow-hidden">
-        {recommendations[activeCategory] && recommendations[activeCategory].length > 0 ? (
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={1.2}
-            centeredSlides={false}
-            breakpoints={{
-              640: {
-                slidesPerView: 2.2,
-              },
-              1024: {
-                slidesPerView: 3.2,
-              },
-            }}
-          >
-            {recommendations[activeCategory].map((product, index) => (
-              <SwiperSlide key={product.id}>
-                <ProductCard product={product} index={index} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
+        
+        {allProducts.length === 0 && (
           <div className="flex items-center justify-center h-full">
             <p className="text-gray-500">
-              No recommendations available for {activeCategory}
+              No recommendations available
             </p>
           </div>
         )}
