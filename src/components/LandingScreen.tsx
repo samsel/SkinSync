@@ -33,16 +33,16 @@ const LandingScreen: React.FC = () => {
       </div>
       
       <motion.div 
-        className="mb-6"
+        className="mb-8"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Logo className="w-20 h-20" />
+        <Logo className="w-32 h-32" />
       </motion.div>
       
       <motion.h1 
-        className="text-4xl font-bold mb-3 text-primary"
+        className="text-5xl font-bold mb-4 text-primary"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -51,12 +51,12 @@ const LandingScreen: React.FC = () => {
       </motion.h1>
       
       <motion.p 
-        className="text-lg mb-8 max-w-md mx-auto text-gray-600 dark:text-gray-300"
+        className="text-xl mb-12 max-w-md mx-auto text-gray-600 dark:text-gray-300"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-        Get personalized makeup recommendations based on your unique skin tone and undertone
+        Your personal beauty companion for perfect makeup matches
       </motion.p>
       
       <motion.div
