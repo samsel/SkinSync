@@ -54,7 +54,7 @@ const LandingScreen: React.FC = () => {
                 Selfie. Scan. Slay.
               </p>
                             <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
-                Get beauty recs powered by AI that actually get you.
+                Get beauty recs powered by AI that actually gets you.
               </p>
             </div>
           </div>
