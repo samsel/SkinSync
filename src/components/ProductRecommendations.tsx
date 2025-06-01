@@ -56,7 +56,7 @@ const ProductRecommendations: React.FC = () => {
       </div>
 
       {skinAnalysis && (
-        <div className="bg-gray-800/50 px-4 py-8 md:py-12">
+        <div className="bg-gray-800/50 px-4 py-6">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <motion.div
@@ -64,63 +64,42 @@ const ProductRecommendations: React.FC = () => {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Logo className="w-10 h-10" />
+                <Logo className="w-8 h-8" />
               </motion.div>
               <motion.h2 
-                className="text-2xl md:text-3xl font-bold text-primary"
+                className="text-xl font-medium text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Wow! I've found {totalRecommendations} matches for you
+                Found {totalRecommendations} perfect matches
               </motion.h2>
             </div>
 
-            <motion.p 
-              className="text-lg text-gray-300 mb-8 font-medium"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              Based on your skin analysis, here are your perfect matches customized just for you!
-            </motion.p>
-
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-4"
+              className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <motion.div 
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-sm text-primary font-medium mb-1">Your undertone</div>
-                <div className="text-2xl font-semibold text-white capitalize">
+              <div className="flex items-center gap-2">
+                <div className="text-xs uppercase tracking-wider text-gray-400">Undertone</div>
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-sm font-medium text-white capitalize">
                   {skinAnalysis.undertone}
                 </div>
-              </motion.div>
-              <motion.div 
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-sm text-primary font-medium mb-1">Your complexion</div>
-                <div className="text-2xl font-semibold text-white capitalize">
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="text-xs uppercase tracking-wider text-gray-400">Complexion</div>
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-sm font-medium text-white capitalize">
                   {skinAnalysis.complexion}
                 </div>
-              </motion.div>
-              <motion.div 
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-sm text-primary font-medium mb-1">Your skin type</div>
-                <div className="text-2xl font-semibold text-white capitalize">
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="text-xs uppercase tracking-wider text-gray-400">Skin Type</div>
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-sm font-medium text-white capitalize">
                   {skinAnalysis.skinType}
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -134,7 +113,7 @@ const ProductRecommendations: React.FC = () => {
               size="sm"
               onClick={() => setSelectedCategory(null)}
             >
-              All Categories
+              All Products
             </Button>
             {PRODUCT_CATEGORIES.map((category) => (
               <Button
