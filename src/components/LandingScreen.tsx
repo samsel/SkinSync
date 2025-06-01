@@ -78,7 +78,7 @@ const LandingScreen: React.FC = () => {
       >
         <div className="max-w-2xl mx-auto flex items-center justify-center gap-3 text-[10px] font-extralight text-gray-400">
           <ShieldCheck size={16} className="flex-shrink-0 text-primary-400" />
-          <span>Your privacy matters! This app doesn't store any photos.</span>
+          <span>Your privacy matters. This app doesn't store any photos.</span>
         </div>
       </motion.footer>
     </motion.div>
