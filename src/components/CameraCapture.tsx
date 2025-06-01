@@ -21,7 +21,10 @@ const CameraCapture: React.FC = () => {
   useEffect(() => {
     let mounted = true;
 
-    // Request camera permission immediately
+    // Initial cleanup to ensure no lingering streams
+    cleanup();
+
+    // Request camera permission
     navigator.mediaDevices.getUserMedia({ video: true })
       .catch(err => {
         if (mounted) {
@@ -29,7 +32,6 @@ const CameraCapture: React.FC = () => {
         }
       });
       
-    // Cleanup when component unmounts
     return () => {
       mounted = false;
       cleanup();
@@ -38,9 +40,9 @@ const CameraCapture: React.FC = () => {
 
   const handleCapture = () => {
     if (!isCameraReady) return;
+    
     const imageSrc = captureImage();
     if (imageSrc) {
-      cleanup();
       setCapturedImage(imageSrc);
       setCurrentStep('analyzing');
     }
@@ -135,5 +137,3 @@ const CameraCapture: React.FC = () => {
     </motion.div>
   );
 };
-
-export default CameraCapture;

@@ -10,51 +10,55 @@ export const useCamera = () => {
   // Cleanup function that ensures all tracks are stopped
   const cleanup = useCallback(() => {
     try {
-      // Function to stop all tracks in a stream
-      const stopStream = (stream: MediaStream | null) => {
-        if (stream) {
-          stream.getTracks().forEach(track => {
-            track.enabled = false;
-            track.stop();
-          });
-        }
-      };
+      // Stop all tracks from the stored stream reference
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => {
+          track.stop();
+          track.enabled = false;
+        });
+        streamRef.current = null;
+      }
 
-      // Stop stream from streamRef
-      stopStream(streamRef.current);
-      streamRef.current = null;
-
-      // Stop stream from webcam video element
-      if (webcamRef.current?.video?.srcObject) {
-        stopStream(webcamRef.current.video.srcObject as MediaStream);
+      // Stop all tracks from the video element
+      if (webcamRef.current?.video?.srcObject instanceof MediaStream) {
+        const stream = webcamRef.current.video.srcObject as MediaStream;
+        stream.getTracks().forEach(track => {
+          track.stop();
+          track.enabled = false;
+        });
         webcamRef.current.video.srcObject = null;
       }
 
-      // Clear any active media streams
-      navigator.mediaDevices.getUserMedia({ video: false })
-        .then(stream => {
-          stream.getTracks().forEach(track => track.stop());
-        })
-        .catch(() => {});
+      // Explicitly stop any active user media
+      if (navigator.mediaDevices) {
+        navigator.mediaDevices.getUserMedia({ video: false, audio: false })
+          .then(stream => {
+            stream.getTracks().forEach(track => {
+              track.stop();
+              track.enabled = false;
+            });
+          })
+          .catch(() => {});
+      }
 
       setIsCameraReady(false);
       setError(null);
     } catch (error) {
       console.error('Error during cleanup:', error);
-      setError('Error during cleanup');
     }
   }, []);
 
   // Handle camera ready state
   const handleCameraReady = useCallback((stream: MediaStream) => {
     try {
+      // Store the stream reference for later cleanup
       streamRef.current = stream;
       setIsCameraReady(true);
       setError(null);
     } catch (error) {
       console.error('Error in handleCameraReady:', error);
-      setError('Failed to initialize camera');
       cleanup();
+      setError('Failed to initialize camera');
     }
   }, [cleanup]);
 
@@ -71,16 +75,23 @@ export const useCamera = () => {
         setError('Failed to capture image');
         return null;
       }
+      
+      // Immediately cleanup after successful capture
+      cleanup();
       return imageSrc;
     } catch (error) {
       console.error('Error capturing image:', error);
+      cleanup();
       setError('Failed to capture image');
       return null;
     }
-  }, []);
+  }, [cleanup]);
 
   // Cleanup on unmount
   useEffect(() => {
+    // Initial cleanup to ensure no lingering streams
+    cleanup();
+    
     return () => {
       cleanup();
     };
