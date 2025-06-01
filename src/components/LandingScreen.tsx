@@ -56,9 +56,9 @@ const LandingScreen: React.FC = () => {
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="rounded-full px-8 py-6 text-lg flex items-center gap-2 w-full justify-center"
+            className="rounded-full px-8 py-6 text-lg flex items-center gap-3 w-full justify-center"
           >
-            <Camera size={20} />
+            <Camera size={24} className="flex-shrink-0" />
             Take a snap
           </Button>
         </motion.div>
@@ -71,7 +71,7 @@ const LandingScreen: React.FC = () => {
         transition={{ delay: 0.6 }}
       >
         <div className="max-w-md mx-auto flex items-center justify-center gap-2 text-sm text-gray-400">
-          <ShieldCheck size={16} className="flex-shrink-0 text-primary-400" />
+          <ShieldCheck size={20} className="flex-shrink-0 text-primary-400" />
           <span>Your privacy matters! We don't store any photos - they're analyzed instantly and deleted.</span>
         </div>
       </motion.footer>
