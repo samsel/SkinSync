@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, Redo2 } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
+import { PRODUCT_CATEGORIES } from '../lib/supabase';
 
 const ProductRecommendations: React.FC = () => {
   const { recommendations, skinAnalysis, setCurrentStep } = useAppStore();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const handleRetake = () => {
     setCurrentStep('camera');
   };
 
   const totalRecommendations = Object.values(recommendations).reduce(
-    (sum, products) => sum + products.length, 
+    (sum, products) => sum + Math.min(products.length, 3), 
     0
   );
 
-  const allProducts = Object.values(recommendations).flat();
+  // Filter and limit products based on selected category
+  const displayProducts = selectedCategory
+    ? recommendations[selectedCategory]?.slice(0, 3) || []
+    : Object.entries(recommendations).flatMap(([category, products]) => 
+        products.slice(0, 3).map(product => ({ ...product, category }))
+      );
 
   return (
     <motion.div 
@@ -49,7 +56,7 @@ const ProductRecommendations: React.FC = () => {
       </div>
 
       {skinAnalysis && (
-        <div className="bg-gray-800/50 px-4 py-8 md:py-12 mb-6">
+        <div className="bg-gray-800/50 px-4 py-8 md:py-12">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <motion.div
@@ -119,17 +126,43 @@ const ProductRecommendations: React.FC = () => {
         </div>
       )}
 
+      <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+        <div className="px-4 py-3 max-w-7xl mx-auto">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <Button
+              variant={selectedCategory === null ? "primary" : "ghost"}
+              size="sm"
+              onClick={() => setSelectedCategory(null)}
+            >
+              All Categories
+            </Button>
+            {PRODUCT_CATEGORIES.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "primary" : "ghost"}
+                size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className="whitespace-nowrap"
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="flex-grow px-4 pb-6 overflow-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
-          {allProducts.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto pt-6">
+          {displayProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>
         
-        {allProducts.length === 0 && (
+        {displayProducts.length === 0 && (
           <div className="flex items-center justify-center h-full">
             <p className="text-gray-400">
               No recommendations available
+              {selectedCategory && ` for ${selectedCategory}`}
             </p>
           </div>
         )}
