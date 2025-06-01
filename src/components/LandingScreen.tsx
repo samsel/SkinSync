@@ -61,7 +61,7 @@ const LandingScreen: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <div className="relative p-2 rounded-2xl overflow-hidden backdrop-blur-sm border border-primary-500/20">
+          <div className="relative p-2 overflow-hidden backdrop-blur-sm border border-primary-500/20">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10"></div>
             <div className="absolute inset-0 bg-primary-950/30"></div>
             <div className="relative">
