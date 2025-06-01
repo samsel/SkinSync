@@ -88,16 +88,14 @@ Only return valid JSON, no other text or explanation.`
       throw new Error('Invalid Llama API response structure');
     }
 
-    const jsonMatch = data.completion_message.content.text.match(/```json\s*({[\s\S]*?})\s*```/);
-    if (!jsonMatch) {
-      throw new Error('Could not find JSON in Llama API response');
-    }
-
+    const responseText = data.completion_message.content.text;
     let analysis: SkinAnalysis;
+
+    // First try to parse the response text directly as JSON
     try {
-      analysis = JSON.parse(jsonMatch[1]);
+      analysis = JSON.parse(responseText);
       
-      // Check if there's an error message
+      // If this is an error response, return it directly
       if (analysis.error) {
         return new Response(JSON.stringify({ error: analysis.error }), {
           headers: {
@@ -106,27 +104,32 @@ Only return valid JSON, no other text or explanation.`
           },
         });
       }
+    } catch {
+      // If direct parsing fails, try to extract JSON from markdown code block
+      const jsonMatch = responseText.match(/```json\s*({[\s\S]*?})\s*```/);
+      if (!jsonMatch) {
+        throw new Error('Could not parse JSON from Llama API response');
+      }
+      analysis = JSON.parse(jsonMatch[1]);
+    }
 
-      // Validate the analysis object structure and values
-      if (!analysis || typeof analysis !== 'object') {
-        throw new Error('Invalid analysis: not an object');
-      }
+    // Validate the analysis object structure and values
+    if (!analysis || typeof analysis !== 'object') {
+      throw new Error('Invalid analysis: not an object');
+    }
 
-      const validUndertones = ['warm', 'cool', 'neutral'];
-      const validComplexions = ['fair', 'light', 'medium', 'tan', 'deep', 'dark'];
-      const validSkinTypes = ['dry', 'oily', 'combination', 'normal'];
+    const validUndertones = ['warm', 'cool', 'neutral'];
+    const validComplexions = ['fair', 'light', 'medium', 'tan', 'deep', 'dark'];
+    const validSkinTypes = ['dry', 'oily', 'combination', 'normal'];
 
-      if (!analysis.undertone || !validUndertones.includes(analysis.undertone)) {
-        throw new Error('Invalid analysis: invalid or missing undertone');
-      }
-      if (!analysis.complexion || !validComplexions.includes(analysis.complexion)) {
-        throw new Error('Invalid analysis: invalid or missing complexion');
-      }
-      if (!analysis.skinType || !validSkinTypes.includes(analysis.skinType)) {
-        throw new Error('Invalid analysis: invalid or missing skinType');
-      }
-    } catch (error) {
-      throw new Error(`Failed to parse or validate Llama API response: ${error.message}`);
+    if (!analysis.undertone || !validUndertones.includes(analysis.undertone)) {
+      throw new Error('Invalid analysis: invalid or missing undertone');
+    }
+    if (!analysis.complexion || !validComplexions.includes(analysis.complexion)) {
+      throw new Error('Invalid analysis: invalid or missing complexion');
+    }
+    if (!analysis.skinType || !validSkinTypes.includes(analysis.skinType)) {
+      throw new Error('Invalid analysis: invalid or missing skinType');
     }
 
     console.timeEnd('edge-function-duration');
