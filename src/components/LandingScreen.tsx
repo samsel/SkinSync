@@ -78,7 +78,7 @@ const LandingScreen: React.FC = () => {
         </motion.div>     
         
         <motion.div 
-          className="w-full max-w-4xl mx-auto mt-auto"
+          className="w-full mt-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
@@ -88,7 +88,7 @@ const LandingScreen: React.FC = () => {
             <img 
               src="/ChatGPT Image Jun 1, 2025, 02_16_03 PM.png" 
               alt="Foundation swatches on different skin tones" 
-              className="w-full h-64 object-cover rounded-lg opacity-90"
+              className="w-full h-64 object-cover opacity-90"
             />
             <div className="absolute inset-x-0 bottom-0 p-6 z-20">
               <p className="text-lg sm:text-xl text-white/90 font-light">
