@@ -14,14 +14,14 @@ const LandingScreen: React.FC = () => {
 
   return (
     <motion.div 
-      className="flex flex-col min-h-[100dvh]"
+      className="flex flex-col min-h-[100dvh] text-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-8">
         <motion.div 
-          className="flex items-center gap-4 mb-8"
+          className="flex flex-col items-center gap-4 mb-8"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -29,8 +29,8 @@ const LandingScreen: React.FC = () => {
           <Logo className="w-20 h-20" />
           <motion.h1 
             className="text-5xl font-bold text-primary"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
             SkinSync
