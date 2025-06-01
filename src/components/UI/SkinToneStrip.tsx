@@ -16,7 +16,7 @@ const SkinToneStrip: React.FC = () => {
   ];
 
   return (
-    <div className="fixed left-0 top-0 bottom-0 w-4 flex flex-col">
+    <div className="fixed left-0 top-0 bottom-0 w-3 flex flex-col">
       {skinTones.map((tone, index) => (
         <div
           key={index}
