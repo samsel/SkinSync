@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Camera } from 'lucide-react';
+import { Camera, Sparkles, Zap, ShoppingBag } from 'lucide-react';
 import { Button } from './UI/Button';
 import { useAppStore } from '../store';
 import { Logo } from './Logo';
@@ -11,6 +11,27 @@ const LandingScreen: React.FC = () => {
   const handleStartCapture = () => {
     setCurrentStep('camera');
   };
+
+  const features = [
+    {
+      icon: Zap,
+      title: "Instant Analysis",
+      description: "Advanced AI technology analyzes your unique features in milliseconds with professional-grade accuracy",
+      gradient: "from-violet-500 to-fuchsia-500"
+    },
+    {
+      icon: Sparkles,
+      title: "Perfect Match",
+      description: "Get personalized product recommendations that complement your exact skin tone and undertone",
+      gradient: "from-fuchsia-500 to-rose-500"
+    },
+    {
+      icon: ShoppingBag,
+      title: "Smart Shopping",
+      description: "Browse curated selections from top brands and purchase your perfect matches instantly",
+      gradient: "from-rose-500 to-violet-500"
+    }
+  ];
 
   return (
     <motion.div 
@@ -63,29 +84,51 @@ const LandingScreen: React.FC = () => {
       </motion.div>
       
       <motion.div 
-        className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full"
+        className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        {[
-          {
-            title: "Instant Analysis",
-            description: "Our AI analyzes your facial features in seconds"
-          },
-          {
-            title: "Perfect Match",
-            description: "Find makeup products that perfectly match your skin tone"
-          },
-          {
-            title: "Shop Directly",
-            description: "Purchase recommended products from your favorite brands"
-          }
-        ].map((feature, index) => (
-          <div key={index} className="p-6 rounded-lg bg-gray-800 border border-gray-700">
-            <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-            <p className="text-sm text-gray-400">{feature.description}</p>
-          </div>
+        {features.map((feature, index) => (
+          <motion.div
+            key={index}
+            className="relative overflow-hidden rounded-xl bg-gray-800/50 backdrop-blur-sm border border-gray-700"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="absolute inset-0 opacity-10 bg-gradient-to-br" />
+            
+            <div className="relative p-6">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                className="mb-4"
+              >
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${feature.gradient}`}>
+                  <feature.icon size={24} className="text-white" />
+                </div>
+              </motion.div>
+
+              <motion.h3 
+                className="text-xl font-semibold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + index * 0.1 }}
+              >
+                {feature.title}
+              </motion.h3>
+
+              <motion.p 
+                className="text-sm leading-relaxed text-gray-400"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+              >
+                {feature.description}
+              </motion.p>
+            </div>
+          </motion.div>
         ))}
       </motion.div>
     </motion.div>
