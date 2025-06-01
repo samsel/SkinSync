@@ -19,6 +19,12 @@ const CameraCapture: React.FC = () => {
   const { setCurrentStep, setCapturedImage } = useAppStore();
 
   useEffect(() => {
+    // Request camera permission immediately
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .catch(err => {
+        console.error('Camera permission error:', err);
+      });
+      
     return () => cleanup();
   }, [cleanup]);
 
@@ -32,12 +38,13 @@ const CameraCapture: React.FC = () => {
   };
 
   const handleCancel = () => {
+    cleanup();
     setCurrentStep('landing');
   };
 
   const videoConstraints = {
-    width: { min: 720, ideal: 1280, max: 1920 },
-    height: { min: 1280, ideal: 1920, max: 2560 },
+    width: { ideal: 1280 },
+    height: { ideal: 720 },
     facingMode: "user",
     aspectRatio: 4/3
   };
@@ -80,6 +87,7 @@ const CameraCapture: React.FC = () => {
           videoConstraints={videoConstraints}
           onUserMedia={handleCameraReady}
           className="h-full w-full object-cover"
+          mirrored
         />
 
         {/* Capture button area */}
