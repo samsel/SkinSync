@@ -23,6 +23,12 @@ const AnalyzingScreen: React.FC = () => {
         
         // Step 1: Analyze the skin tone
         const analysisResult = await analyzeSkinTone(capturedImage);
+        
+        // Check if there was an error from the Llama API
+        if ('error' in analysisResult) {
+          throw new Error(analysisResult.error);
+        }
+        
         console.log('Skin analysis completed:', analysisResult);
         setSkinAnalysis(analysisResult);
         
@@ -57,11 +63,11 @@ const AnalyzingScreen: React.FC = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6 max-w-md w-full text-center">
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 max-w-md w-full text-center">
           <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-red-700 dark:text-red-400 mb-2">Analysis Failed</h3>
-          <p className="text-red-600 dark:text-red-300 mb-4">{error}</p>
-          <Button onClick={handleRetry} variant="secondary">
+          <h3 className="text-lg font-semibold text-red-400 mb-2">Analysis Failed</h3>
+          <p className="text-gray-300 mb-6">{error}</p>
+          <Button onClick={handleRetry} variant="primary">
             Try Again
           </Button>
         </div>
@@ -82,7 +88,7 @@ const AnalyzingScreen: React.FC = () => {
         {capturedImage && (
           <div className="relative w-64 h-64 mb-8">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full"
+              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/20 rounded-full"
               animate={{ 
                 scale: [1, 1.05, 1],
                 opacity: [0.7, 0.9, 0.7]
@@ -102,7 +108,7 @@ const AnalyzingScreen: React.FC = () => {
               className="absolute inset-0 border-4 border-primary rounded-full"
               animate={{ 
                 rotate: 360,
-                borderColor: ['#8B5CF6', '#EC4899', '#14B8A6', '#8B5CF6']
+                borderColor: ['#6B7280', '#9CA3AF', '#6B7280']
               }}
               transition={{
                 duration: 3,
@@ -114,7 +120,7 @@ const AnalyzingScreen: React.FC = () => {
         )}
         
         <motion.div 
-          className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-full mb-4"
+          className="flex items-center gap-3 bg-gray-800/10 backdrop-blur-md px-6 py-4 rounded-full mb-4"
           animate={{ y: [0, -5, 0] }}
           transition={{ 
             duration: 1.5, 
@@ -127,12 +133,12 @@ const AnalyzingScreen: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="w-full bg-white/20 h-2 rounded-full overflow-hidden"
+          className="w-full bg-gray-800/20 h-2 rounded-full overflow-hidden"
           initial={{ width: '100%', opacity: 0.7 }}
           animate={{ opacity: 1 }}
         >
           <motion.div 
-            className="h-full bg-gradient-to-r from-primary to-secondary"
+            className="h-full bg-gradient-to-r from-primary to-primary-600"
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 4, ease: "easeInOut" }}
@@ -140,7 +146,7 @@ const AnalyzingScreen: React.FC = () => {
         </motion.div>
         
         <motion.p 
-          className="mt-4 text-center text-sm opacity-80"
+          className="mt-4 text-center text-sm text-gray-400"
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{
             duration: 2,

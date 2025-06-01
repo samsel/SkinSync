@@ -9,6 +9,7 @@ interface SkinAnalysis {
   undertone: 'warm' | 'cool' | 'neutral';
   complexion: 'fair' | 'light' | 'medium' | 'tan' | 'deep' | 'dark';
   skinType: 'dry' | 'oily' | 'combination' | 'normal';
+  error?: string;
 }
 
 const LLAMA_API_URL = Deno.env.get('LLAMA_API_URL');
@@ -37,7 +38,9 @@ Deno.serve(async (req) => {
       messages: [
         {
           role: 'system',
-          content: `You are a skin analysis expert. Analyze the provided image and return a JSON object with the following structure:
+          content: `You are a skin analysis expert. First check if the image is clear enough and well-lit to perform analysis. If the image is too dark or the face is not clearly visible, respond with a JSON object containing only an "error" field with the message "The image is too dark or the face is not clearly visible. Please retake the photo in better lighting conditions."
+
+If the image is clear enough, analyze the skin and return a JSON object with the following structure:
 {
   "undertone": "warm" | "cool" | "neutral",
   "complexion": "fair" | "light" | "medium" | "tan" | "deep" | "dark",
@@ -81,12 +84,10 @@ Only return valid JSON, no other text or explanation.`
     const data = await llamaResponse.json();
     console.log('Llama API response:', JSON.stringify(data, null, 2));
 
-    // Extract the completion message from the response
     if (!data.completion_message?.content?.text) {
       throw new Error('Invalid Llama API response structure');
     }
 
-    // The text contains a JSON string wrapped in markdown code blocks
     const jsonMatch = data.completion_message.content.text.match(/```json\s*({[\s\S]*?})\s*```/);
     if (!jsonMatch) {
       throw new Error('Could not find JSON in Llama API response');
@@ -96,6 +97,16 @@ Only return valid JSON, no other text or explanation.`
     try {
       analysis = JSON.parse(jsonMatch[1]);
       
+      // Check if there's an error message
+      if (analysis.error) {
+        return new Response(JSON.stringify({ error: analysis.error }), {
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+          },
+        });
+      }
+
       // Validate the analysis object structure and values
       if (!analysis || typeof analysis !== 'object') {
         throw new Error('Invalid analysis: not an object');
