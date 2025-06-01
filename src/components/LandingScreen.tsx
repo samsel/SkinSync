@@ -58,12 +58,12 @@ const LandingScreen: React.FC = () => {
       </motion.div>
       
       <motion.p 
-        className="text-xl mb-12 max-w-md mx-auto text-gray-300"
+        className="text-xl mb-12 max-w-2xl mx-auto text-gray-300"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-        Your personal beauty companion for perfect makeup matches
+        Take a selfie to discover your perfect makeup matches! Our AI beauty advisor analyzes your unique skin tone, undertones, and facial features to recommend personalized makeup products that will enhance your natural beauty.
       </motion.p>
       
       <motion.div
