@@ -137,3 +137,5 @@ const CameraCapture: React.FC = () => {
     </motion.div>
   );
 };
+
+export default CameraCapture
