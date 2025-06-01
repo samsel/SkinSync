@@ -28,7 +28,7 @@ const LandingScreen: React.FC = () => {
         >
           <Logo className="w-20 h-20" />
           <motion.h1 
-            className="text-4xl font-bold text-primary"
+            className="text-5xl font-bold text-primary"
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -43,10 +43,10 @@ const LandingScreen: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <p className="text-lg mb-2 text-gray-300">
+          <p className="text-xl mb-2 text-gray-300">
             Take a selfie to discover your perfect makeup matches.
           </p>
-          <p className="text-xs font-light text-gray-400">
+          <p className="text-sm font-light text-gray-400">
             Our AI analyzes your unique features to find products that complement your natural beauty.
           </p>
         </motion.div>
@@ -61,7 +61,7 @@ const LandingScreen: React.FC = () => {
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="rounded-full px-8 py-6 text-base flex items-center gap-3 w-full justify-center"
+            className="rounded-full px-8 py-6 text-lg flex items-center gap-3 w-full justify-center"
           >
             <Camera size={20} className="flex-shrink-0" />
             Take a snap
