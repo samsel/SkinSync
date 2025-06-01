@@ -68,7 +68,7 @@ const LandingScreen: React.FC = () => {
             onClick={handleStartCapture}
             variant="primary" 
             size="lg" 
-            className="relative h-14 sm:h-16 rounded-full text-xl sm:text-2xl font-medium px-8 sm:px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20 w-full sm:w-auto"
+className="relative h-16 rounded-full text-2xl font-medium px-12 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-500 hover:to-primary-600 border-2 border-primary-400/20"
           >
             <span className="flex items-center justify-center gap-3">
               <Camera className="w-6 h-6 sm:w-7 sm:h-7" />
