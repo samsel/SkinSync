@@ -100,7 +100,7 @@ const LandingScreen: React.FC = () => {
         {/* Value Proposition Cards */}
      
          
-        </div>
+     
       </main>
 
       <motion.footer
