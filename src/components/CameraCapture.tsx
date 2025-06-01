@@ -27,7 +27,6 @@ const CameraCapture: React.FC = () => {
       
     // Cleanup when component unmounts
     return () => {
-      console.log('CameraCapture unmounting, cleaning up...');
       cleanup();
     };
   }, [cleanup]);
