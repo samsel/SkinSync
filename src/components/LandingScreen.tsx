@@ -100,28 +100,28 @@ const LandingScreen: React.FC = () => {
 
         {/* Value Proposition Cards */}
         <motion.div 
-          className="w-full max-w-5xl mx-auto px-4 mb-8 overflow-x-auto pb-4"
+          className="w-full max-w-5xl mx-auto px-4 mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
         >
-          <div className="flex flex-row gap-4 min-w-max px-2">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {valueProps.map((prop, index) => (
               <motion.div
                 key={prop.title}
-                className="relative group w-[280px]"
+                className="relative group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: prop.delay }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-accent-500/10 to-primary-500/10 rounded-xl blur-xl transform group-hover:scale-105 transition-transform duration-300" />
-                <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
+                <div className="relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-3 sm:p-6 h-full transform hover:-translate-y-1 transition-transform duration-300">
                   <div className="flex flex-col items-center text-center">
-                    <div className="p-3 bg-primary-500/20 rounded-full mb-4">
-                      <prop.icon className="w-6 h-6 text-primary-400" />
+                    <div className="p-2 sm:p-3 bg-primary-500/20 rounded-full mb-2 sm:mb-4">
+                      <prop.icon className="w-4 h-4 sm:w-6 sm:h-6 text-primary-400" />
                     </div>
-                    <h3 className="text-lg font-medium text-white mb-2">{prop.title}</h3>
-                    <p className="text-sm text-gray-300">{prop.description}</p>
+                    <h3 className="text-sm sm:text-lg font-medium text-white mb-1 sm:mb-2">{prop.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-300 line-clamp-2 sm:line-clamp-none">{prop.description}</p>
                   </div>
                 </div>
               </motion.div>
