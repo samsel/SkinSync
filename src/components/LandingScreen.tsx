@@ -14,6 +14,7 @@ const LandingScreen: React.FC = () => {
   };
 
 
+
   return (
     <motion.div 
       className="flex flex-col min-h-[100dvh] text-center bg-gradient-to-b from-gray-900 via-gray-900 to-primary-900/50 safe-top safe-bottom"
@@ -29,7 +30,7 @@ const LandingScreen: React.FC = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-  
+          <Logo className="w-16 h-16 sm:w-20 sm:h-20 text-primary-400" />
           <motion.h1 
             className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500 text-transparent bg-clip-text"
             initial={{ y: -20, opacity: 0 }}
