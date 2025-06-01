@@ -50,7 +50,7 @@ const LandingScreen: React.FC = () => {
               <h2 className="text-xl sm:text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text whitespace-nowrap overflow-x-auto scrollbar-hide">
                 your natural beauty + makeup = sync
               </h2>
-              <p className="text-sm font-light text-gray-300 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm font-light text-gray-300 whitespace-nowrap overflow-x-auto scrollbar-hide">
                 Get beauty recs powered by AI that actually gets you.
               </p>
             </div>
