@@ -20,18 +20,23 @@ const CameraCapture: React.FC = () => {
 
   useEffect(() => {
     let mounted = true;
-
-    // Initial cleanup to ensure no lingering streams
+    
+    // Initial cleanup
     cleanup();
 
     // Request camera permission
     navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        if (!mounted) {
+          stream.getTracks().forEach(track => track.stop());
+        }
+      })
       .catch(err => {
         if (mounted) {
           console.error('Camera permission error:', err);
         }
       });
-      
+
     return () => {
       mounted = false;
       cleanup();
@@ -78,7 +83,6 @@ const CameraCapture: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Close button */}
       <motion.button
         onClick={handleCancel}
         className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center text-white"
@@ -89,7 +93,6 @@ const CameraCapture: React.FC = () => {
         <X className="w-6 h-6" />
       </motion.button>
 
-      {/* Guidance text */}
       <motion.div 
         className="absolute inset-x-0 top-12 z-10 text-center"
         initial={{ opacity: 0, y: -20 }}
@@ -101,7 +104,6 @@ const CameraCapture: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* Camera view */}
       <div className="relative h-full">
         <Webcam
           audio={false}
@@ -113,14 +115,12 @@ const CameraCapture: React.FC = () => {
           mirrored
         />
 
-        {/* Guide overlay */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
             <div className="w-72 h-72 rounded-full border-2 border-white/30" />
           </div>
         </div>
 
-        {/* Capture button area */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-black/40 backdrop-blur-sm flex items-center justify-center">
           <motion.button
             onClick={handleCapture}
@@ -138,4 +138,4 @@ const CameraCapture: React.FC = () => {
   );
 };
 
-export default CameraCapture
+export default CameraCapture;

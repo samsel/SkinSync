@@ -6,6 +6,7 @@ export const useCamera = () => {
   const [error, setError] = useState<string | null>(null);
   const webcamRef = useRef<Webcam>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const mountedRef = useRef(true);
 
   // Cleanup function that ensures all tracks are stopped
   const cleanup = useCallback(() => {
@@ -14,7 +15,6 @@ export const useCamera = () => {
       if (streamRef.current) {
         streamRef.current.getTracks().forEach(track => {
           track.stop();
-          track.enabled = false;
         });
         streamRef.current = null;
       }
@@ -24,25 +24,21 @@ export const useCamera = () => {
         const stream = webcamRef.current.video.srcObject as MediaStream;
         stream.getTracks().forEach(track => {
           track.stop();
-          track.enabled = false;
         });
         webcamRef.current.video.srcObject = null;
       }
 
-      // Explicitly stop any active user media
-      if (navigator.mediaDevices) {
-        navigator.mediaDevices.getUserMedia({ video: false, audio: false })
-          .then(stream => {
-            stream.getTracks().forEach(track => {
-              track.stop();
-              track.enabled = false;
-            });
-          })
-          .catch(() => {});
-      }
+      // Release user media
+      navigator.mediaDevices?.getUserMedia({ video: false })
+        .then(stream => {
+          stream.getTracks().forEach(track => track.stop());
+        })
+        .catch(() => {});
 
-      setIsCameraReady(false);
-      setError(null);
+      if (mountedRef.current) {
+        setIsCameraReady(false);
+        setError(null);
+      }
     } catch (error) {
       console.error('Error during cleanup:', error);
     }
@@ -50,8 +46,12 @@ export const useCamera = () => {
 
   // Handle camera ready state
   const handleCameraReady = useCallback((stream: MediaStream) => {
+    if (!mountedRef.current) {
+      stream.getTracks().forEach(track => track.stop());
+      return;
+    }
+
     try {
-      // Store the stream reference for later cleanup
       streamRef.current = stream;
       setIsCameraReady(true);
       setError(null);
@@ -76,7 +76,7 @@ export const useCamera = () => {
         return null;
       }
       
-      // Immediately cleanup after successful capture
+      // Immediately cleanup after capture
       cleanup();
       return imageSrc;
     } catch (error) {
@@ -87,12 +87,13 @@ export const useCamera = () => {
     }
   }, [cleanup]);
 
-  // Cleanup on unmount
+  // Cleanup on mount and unmount
   useEffect(() => {
-    // Initial cleanup to ensure no lingering streams
-    cleanup();
-    
+    mountedRef.current = true;
+    cleanup(); // Initial cleanup
+
     return () => {
+      mountedRef.current = false;
       cleanup();
     };
   }, [cleanup]);
