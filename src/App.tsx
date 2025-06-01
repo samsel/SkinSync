@@ -26,7 +26,7 @@ function App() {
     <div className={`min-h-screen ${
       theme === 'dark' 
         ? 'bg-gray-900 text-white' 
-        : 'bg-gray-50 text-gray-900'
+        : 'bg-primary-50 text-gray-900'
     } transition-colors duration-300`}>
       <AnimatePresence mode="wait">
         {currentStep === 'landing' && <LandingScreen key="landing" />}
