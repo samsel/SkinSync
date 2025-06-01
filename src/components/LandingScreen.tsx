@@ -15,8 +15,8 @@ const LandingScreen: React.FC = () => {
 
   const valueProps = [
     {
-      title: "Take a Selfie",
-      description: "Snap a quick photo in natural light",
+      title: "Take a Selfie in natural light",
+      description: "",
       delay: 0.2
     },
     {
