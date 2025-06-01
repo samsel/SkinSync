@@ -113,7 +113,7 @@ const ProductRecommendations: React.FC = () => {
               size="sm"
               onClick={() => setSelectedCategory(null)}
             >
-              All Products
+              all
             </Button>
             {PRODUCT_CATEGORIES.map((category) => (
               <Button
