@@ -1,6 +1,6 @@
 # SkinSync 🎨
 
-SkinSync is an AI-powered makeup recommendation platform that analyzes your skin tone, undertone, and features to provide personalized product suggestions. Using advanced facial analysis and machine learning, it helps you find the perfect makeup matches for your unique complexion.
+SkinSync is an AI-powered makeup recommendation platform that analyzes your skin tone, undertone, and features to provide personalized makeup product suggestions. Under the hood, this app uses Llama API to access `Llama-4-Maverick-17B-128E-Instruct-FP8` LLM, which helps understand the face skin's characteristics.
 
 ## Features
 
