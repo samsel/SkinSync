@@ -47,7 +47,7 @@ const LandingScreen: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10"></div>
             <div className="absolute inset-0 bg-primary-950/30"></div>
             <div className="relative">
-              <h2 className="text-3xl font-light mb-4 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
+              <h2 className="text-3xl font-light mb-2 bg-gradient-to-r from-primary-300 via-white to-accent-300 text-transparent bg-clip-text">
                 Discover your perfect makeup match
               </h2>
               <p className="text-sm font-light text-gray-300">
