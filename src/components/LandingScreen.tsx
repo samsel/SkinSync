@@ -20,7 +20,7 @@ const LandingScreen: React.FC = () => {
       exit={{ opacity: 0 }}
     >
       <SkinToneStrip />
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-4 safe-top safe-bottom">
+      <main className="flex-1 flex flex-col items-center justify-center safe-top safe-bottom">
         <motion.div 
           className="w-full max-w-4xl mx-auto mt-12 sm:mt-20 mb-12 sm:mb-16 px-4 sm:px-8"
           initial={{ scale: 0.9, opacity: 0 }}
