@@ -95,4 +95,3 @@ MIT License - feel free to use this project for learning, modification, and dist
 
 - Icons by [Lucide React](https://lucide.dev)
 - UI components inspired by modern design principles
-- Face detection models from face-api.js
