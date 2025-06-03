@@ -101,4 +101,4 @@ Base your analysis on:
 *   Find at least  200 products
     
 
-There should be atleast 3 products for each of the various combinations of **Undertone, Complexion, Skin Type**:
+There should be atleast 3 products for each of the various combinations of **Undertone, Complexion, Skin Type**
